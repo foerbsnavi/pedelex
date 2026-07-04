@@ -118,9 +118,9 @@ const indexHtml = `<!doctype html>
   <meta name="twitter:card" content="summary">
   <link rel="canonical" href="https://foerbsnavi.github.io/pedelex/">
   <style>
-    :root { color-scheme: light dark; --fg: #111; --muted: #666; --bg: #fff; --accent: #0f9d58; --border: #d0d7de; --code-bg: #f6f8fa; --card: #f6f8fa; --pill-bg: #dcfce7; --pill-fg: #15803d; --warn-bg: #fff8c5; --warn-fg: #7d4e00; }
+    :root { color-scheme: light dark; --fg: #111; --muted: #666; --bg: #fff; --accent: #c2410c; --border: #d0d7de; --code-bg: #f6f8fa; --card: #f6f8fa; --pill-bg: #ffedd5; --pill-fg: #c2410c; --warn-bg: #fff8c5; --warn-fg: #7d4e00; }
     @media (prefers-color-scheme: dark) {
-      :root { --fg: #e6edf3; --muted: #8b949e; --bg: #0d1117; --accent: #4ade80; --border: #30363d; --code-bg: #161b22; --card: #161b22; --pill-bg: #16653433; --pill-fg: #4ade80; --warn-bg: #4d350033; --warn-fg: #d4a72c; }
+      :root { --fg: #e6edf3; --muted: #8b949e; --bg: #0d1117; --accent: #fb923c; --border: #30363d; --code-bg: #161b22; --card: #161b22; --pill-bg: #7c2d1233; --pill-fg: #fb923c; --warn-bg: #4d350033; --warn-fg: #d4a72c; }
     }
     * { box-sizing: border-box; }
     body { font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--fg); background: var(--bg); margin: 0; padding: 2rem 1.5rem; }
