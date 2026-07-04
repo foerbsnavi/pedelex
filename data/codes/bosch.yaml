@@ -1,0 +1,1260 @@
+# Bosch eBike Systems — Fehlercodes (BES2/BES3, Gen2-Gen4)
+# Welle 0: 20 Kerncodes, belegt über die offizielle Bosch-Help-Center-API
+# (help.bosch-ebike.com/v1/error_code?externalID=...&languageId=en).
+# Smart-System-Codes (6-stellig) folgen als eigene Welle — siehe RECHERCHE.md.
+# Sortiert aufsteigend nach Code.
+
+- system: bosch
+  code: "410"
+  category: display
+  title:
+    en: Button on the on-board computer stuck or disabled
+    de: Taste am Bordcomputer blockiert
+  description:
+    en: The system has detected that one or more buttons on the on-board computer or control unit are
+      permanently pressed or not responding. This is usually caused by dirt or moisture that has
+      worked its way in around the button. The drive itself is normally not damaged.
+    de: Das System hat erkannt, dass eine oder mehrere Tasten am Bordcomputer bzw. an der Bedieneinheit
+      dauerhaft gedrückt sind oder nicht reagieren. Ursache ist meist eingedrungener Schmutz oder
+      Feuchtigkeit rund um die Taste. Der Antrieb selbst ist dabei in der Regel nicht beschädigt.
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - on_board_computer
+    - control_unit_buttons
+  common_causes:
+    - id: dirt_ingress
+      likelihood: high
+      label:
+        en: Dirt around the button
+        de: Schmutz rund um die Taste
+    - id: moisture_ingress
+      likelihood: medium
+      label:
+        en: Moisture in the button mechanism
+        de: Feuchtigkeit in der Tastenmechanik
+    - id: mechanical_damage
+      likelihood: low
+      label:
+        en: Mechanical damage to the button
+        de: Mechanische Beschädigung der Taste
+  symptoms:
+    - en: Error 410 shown on the display
+      de: Fehler 410 wird im Display angezeigt
+    - en: One or more buttons do not respond
+      de: Eine oder mehrere Tasten reagieren nicht
+    - en: Assist level cannot be changed
+      de: Unterstützungsstufe lässt sich nicht wechseln
+  self_help:
+    - en: Check whether a button is visibly stuck and press it several times to free it
+      de: Prüfen, ob eine Taste sichtbar klemmt, und sie mehrfach drücken, um sie zu lösen
+    - en: Carefully clean and dry the buttons
+      de: Tasten vorsichtig reinigen und trocknen
+    - en: Switch the system off and on again
+      de: System aus- und wieder einschalten
+  behavior:
+    assist: unaffected
+  repair:
+    difficulty: easy
+    diy_possible: true
+    dealer_tool_required: false
+  related_codes:
+    - bosch:414
+    - bosch:430
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=410&languageId=en
+    - https://www.fahrrad.de/pages/e-bike-fehlercodes
+    - https://upway.de/blogs/ratgeber/bosch-fehlercodes-ebike-loesungen
+    - https://www.ebikediagnose.de/ratgeber/bosch-ebike-fehlercodes-komplette-liste
+- system: bosch
+  code: "414"
+  category: remote
+  title:
+    en: Operating unit connection problem
+    de: Verbindungsproblem der Bedieneinheit
+  description:
+    en: The drive cannot communicate reliably with the operating unit (remote) or on-board computer. The
+      cause is usually a loose plug connection, a damaged cable or corroded contacts between remote,
+      display holder and drive unit. Bosch recommends having the connections checked.
+    de: Der Antrieb kann nicht zuverlässig mit der Bedieneinheit (Remote) bzw. dem Bordcomputer
+      kommunizieren. Ursache ist meist eine lockere Steckverbindung, ein beschädigtes Kabel oder
+      korrodierte Kontakte zwischen Remote, Displayhalter und Antriebseinheit. Bosch empfiehlt, die
+      Verbindungen prüfen zu lassen.
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - control_unit
+    - display_holder
+    - wiring_harness
+  common_causes:
+    - id: loose_connector
+      likelihood: high
+      label:
+        en: Loose plug connection
+        de: Lockere Steckverbindung
+    - id: cable_damage
+      likelihood: medium
+      label:
+        en: Damaged or pinched cable
+        de: Beschädigtes oder gequetschtes Kabel
+    - id: corroded_contacts
+      likelihood: medium
+      label:
+        en: Corroded or dirty contacts
+        de: Korrodierte oder verschmutzte Kontakte
+  symptoms:
+    - en: Error 414 on the display
+      de: Fehler 414 im Display
+    - en: Remote buttons intermittently without function
+      de: Remote-Tasten zeitweise ohne Funktion
+    - en: Display loses connection to the drive
+      de: Display verliert die Verbindung zum Antrieb
+  self_help:
+    - en: Remove the display from its holder, check contacts and reseat it
+      de: Display aus dem Halter nehmen, Kontakte prüfen und wieder einsetzen
+    - en: Check visible plugs and cables at the remote for tight fit
+      de: Sichtbare Stecker und Kabel an der Bedieneinheit auf festen Sitz prüfen
+    - en: Restart the system
+      de: System neu starten
+  behavior:
+    assist: unknown
+  repair:
+    difficulty: medium
+    diy_possible: true
+    dealer_tool_required: false
+  related_codes:
+    - bosch:410
+    - bosch:430
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=414&languageId=en
+    - https://upway.de/blogs/ratgeber/bosch-fehlercodes-ebike-loesungen
+    - https://www.ebikediagnose.de/ratgeber/bosch-ebike-fehlercodes-komplette-liste
+- system: bosch
+  code: "430"
+  category: display
+  title:
+    en: Internal battery of the on-board computer flat
+    de: Interner Akku des Bordcomputers leer
+  description:
+    en: The small internal buffer battery of the on-board computer is discharged, typically after long
+      storage or when the display was used off the bike for a long time. According to Bosch this
+      code does not apply to the BUI350 (Nyon 2). Charging the display in its holder or via USB
+      resolves the issue.
+    de: Der kleine interne Pufferakku des Bordcomputers ist entladen, typischerweise nach längerer
+      Lagerung oder wenn das Display lange abseits des Rads benutzt wurde. Laut Bosch gilt dieser
+      Code nicht für das BUI350 (Nyon 2). Laden des Displays im Halter oder per USB behebt das
+      Problem.
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Kiox/Nyon (nicht BUI350)"
+  affected_components:
+    - on_board_computer
+    - display_internal_battery
+  common_causes:
+    - id: long_storage_discharge
+      likelihood: high
+      label:
+        en: Discharge after long storage
+        de: Entladung nach langer Lagerung
+    - id: holder_contact_issue
+      likelihood: medium
+      label:
+        en: Poor contact in the display holder
+        de: Schlechter Kontakt im Displayhalter
+    - id: aged_internal_battery
+      likelihood: low
+      label:
+        en: Aged internal buffer battery
+        de: Gealterter interner Pufferakku
+  symptoms:
+    - en: Error 430 on the display
+      de: Fehler 430 im Display
+    - en: Display does not start or shuts off when removed from the holder
+      de: Display startet nicht oder geht aus, sobald es aus dem Halter genommen wird
+  self_help:
+    - en: Put the display into its holder and switch the eBike on so it charges from the main battery
+      de: Display in den Halter setzen und das E-Bike einschalten, damit es vom Hauptakku geladen wird
+    - en: Alternatively charge the on-board computer via the USB port
+      de: Alternativ den Bordcomputer über den USB-Anschluss laden
+  behavior:
+    assist: unaffected
+  repair:
+    difficulty: easy
+    diy_possible: true
+    dealer_tool_required: false
+  related_codes:
+    - bosch:410
+    - bosch:431
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=430&languageId=en
+    - https://ebike-mtb.com/en/ebike-error-codes/
+    - https://upway.de/blogs/ratgeber/bosch-fehlercodes-ebike-loesungen
+- system: bosch
+  code: "431"
+  category: system
+  title:
+    en: Software version error
+    de: Software-Versionsfehler
+  description:
+    en: The software versions of the connected components do not match or a firmware version is faulty,
+      for example after an interrupted update. A restart sometimes clears the error; otherwise the
+      dealer has to install matching firmware with the Bosch DiagnosticTool.
+    de: Die Softwarestände der verbundenen Komponenten passen nicht zusammen oder eine Firmware-Version
+      ist fehlerhaft, etwa nach einem abgebrochenen Update. Ein Neustart behebt den Fehler manchmal;
+      andernfalls muss der Händler mit dem Bosch DiagnosticTool eine passende Firmware aufspielen.
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - system_firmware
+    - on_board_computer
+    - drive_unit
+  common_causes:
+    - id: interrupted_update
+      likelihood: medium
+      label:
+        en: Interrupted or failed software update
+        de: Abgebrochenes oder fehlgeschlagenes Software-Update
+    - id: firmware_mismatch
+      likelihood: medium
+      label:
+        en: Mismatched firmware versions between components
+        de: Nicht zueinander passende Firmware-Stände der Komponenten
+    - id: software_bug
+      likelihood: medium
+      label:
+        en: Software error
+        de: Softwarefehler
+  symptoms:
+    - en: Error 431 on the display
+      de: Fehler 431 im Display
+    - en: System behaves erratically after a component swap or update
+      de: System verhält sich nach Komponententausch oder Update fehlerhaft
+  self_help:
+    - en: Restart the system
+      de: System neu starten
+    - en: If the error persists, have the dealer update the software
+      de: Bleibt der Fehler bestehen, Software beim Händler aktualisieren lassen
+  behavior:
+    assist: unknown
+  repair:
+    difficulty: medium
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - bosch:531
+    - bosch:430
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=431&languageId=en
+    - https://ebike-mtb.com/en/ebike-error-codes/
+    - https://upway.de/blogs/ratgeber/bosch-fehlercodes-ebike-loesungen
+- system: bosch
+  code: "500"
+  category: motor
+  title:
+    en: Internal drive unit fault
+    de: Interner Fehler der Antriebseinheit
+  description:
+    en: The drive unit reports an internal error, which can be caused by the software as well as by the
+      electronics or moisture inside the motor. Bosch officially only recommends a restart; if the
+      error keeps coming back, the drive unit has to be diagnosed by a dealer. In stubborn cases
+      this can end in an exchange drive unit.
+    de: Die Antriebseinheit meldet einen internen Fehler, der sowohl von der Software als auch von der
+      Elektronik oder Feuchtigkeit im Motor verursacht werden kann. Bosch empfiehlt offiziell nur
+      einen Neustart; kommt der Fehler wieder, muss die Antriebseinheit vom Händler diagnostiziert
+      werden. In hartnäckigen Fällen läuft es auf eine Austausch-Antriebseinheit hinaus.
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - drive_unit
+    - motor_electronics
+  common_causes:
+    - id: software_hang
+      likelihood: medium
+      label:
+        en: Temporary software hang
+        de: Vorübergehender Software-Hänger
+    - id: motor_electronics_defect
+      likelihood: medium
+      label:
+        en: Defect in the motor electronics
+        de: Defekt in der Motorelektronik
+    - id: moisture_in_drive_unit
+      likelihood: low
+      label:
+        en: Moisture inside the drive unit
+        de: Feuchtigkeit in der Antriebseinheit
+  symptoms:
+    - en: Error 500 on the display
+      de: Fehler 500 im Display
+    - en: Motor assistance fails or cuts out
+      de: Motorunterstützung fällt aus oder bricht ab
+  self_help:
+    - en: Switch the system off, wait a few seconds and switch it on again
+      de: System ausschalten, einige Sekunden warten und wieder einschalten
+    - en: Remove the battery, reinsert it and restart
+      de: Akku entnehmen, wieder einsetzen und neu starten
+    - en: If the error returns, see a Bosch dealer
+      de: Kehrt der Fehler zurück, einen Bosch-Händler aufsuchen
+  behavior:
+    assist: off
+  repair:
+    difficulty: hard
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - bosch:510
+    - bosch:511
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=500&languageId=en
+    - https://ebike-mtb.com/en/ebike-error-codes/
+    - https://www.ebikediagnose.de/ratgeber/bosch-ebike-fehlercodes-komplette-liste
+    - https://www.fahrrad.de/pages/e-bike-fehlercodes
+- system: bosch
+  code: "502"
+  category: system
+  title:
+    en: Bike light fault
+    de: Fehler der Fahrradbeleuchtung
+  description:
+    en: The drive unit has detected a fault in the connected lighting circuit, e.g. an implausible
+      voltage when the light is switched on or off. Typical causes are a defective headlight or
+      taillight, a broken cable or a loose connector. The error only occurs on bikes whose lights
+      are powered by the drive system.
+    de: Die Antriebseinheit hat einen Fehler im angeschlossenen Beleuchtungsstromkreis erkannt, z. B.
+      eine unplausible Spannung beim Ein- oder Ausschalten des Lichts. Typische Ursachen sind ein
+      defekter Scheinwerfer oder ein defektes Rücklicht, ein Kabelbruch oder ein lockerer Stecker.
+      Der Fehler tritt nur bei Rädern auf, deren Licht vom Antriebssystem versorgt wird.
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - lighting_system
+    - headlight
+    - taillight
+    - wiring_harness
+  common_causes:
+    - id: light_defect
+      likelihood: high
+      label:
+        en: Defective headlight or taillight
+        de: Defekter Scheinwerfer oder defektes Rücklicht
+    - id: cable_break
+      likelihood: medium
+      label:
+        en: Broken or damaged light cable
+        de: Gebrochenes oder beschädigtes Lichtkabel
+    - id: loose_connector
+      likelihood: medium
+      label:
+        en: Loose plug connection on the light
+        de: Lockere Steckverbindung am Licht
+  symptoms:
+    - en: Error 502 on the display
+      de: Fehler 502 im Display
+    - en: Front or rear light does not work
+      de: Front- oder Rücklicht funktioniert nicht
+    - en: Light flickers or fails intermittently
+      de: Licht flackert oder fällt zeitweise aus
+  self_help:
+    - en: Check headlight, taillight and visible cables for damage and loose plugs
+      de: Scheinwerfer, Rücklicht und sichtbare Kabel auf Schäden und lockere Stecker prüfen
+    - en: Restart the system
+      de: System neu starten
+    - en: If the error persists, have the lighting circuit checked by a dealer
+      de: Bleibt der Fehler, den Beleuchtungsstromkreis vom Händler prüfen lassen
+  behavior:
+    assist: unaffected
+  repair:
+    difficulty: easy
+    diy_possible: true
+    dealer_tool_required: false
+    estimated_cost_eur:
+      - 10
+      - 60
+    estimated_hours:
+      - 0.25
+      - 1
+  related_codes:
+    - bosch:550
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=502&languageId=en
+    - https://upway.de/blogs/ratgeber/bosch-fehlercodes-ebike-loesungen
+    - https://www.ebikediagnose.de/ratgeber/bosch-ebike-fehlercodes-komplette-liste
+- system: bosch
+  code: "503"
+  category: sensor
+  title:
+    en: Speed sensor fault
+    de: Fehler des Geschwindigkeitssensors
+  description:
+    en: The drive unit is not receiving a valid signal from the speed sensor on the rear wheel — the
+      most frequently seen Bosch error code in practice. In most cases the spoke magnet has shifted,
+      sits too far from the sensor or the sensor is dirty or its cable damaged. Without a plausible
+      speed signal the system stops assisting.
+    de: Die Antriebseinheit erhält kein gültiges Signal vom Geschwindigkeitssensor am Hinterrad — in der
+      Praxis der häufigste Bosch-Fehlercode. Meist hat sich der Speichenmagnet verschoben, sitzt zu
+      weit vom Sensor entfernt oder der Sensor ist verschmutzt bzw. sein Kabel beschädigt. Ohne
+      plausibles Geschwindigkeitssignal stellt das System die Unterstützung ein.
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - speed_sensor
+    - spoke_magnet
+    - sensor_cable
+  common_causes:
+    - id: magnet_misaligned
+      likelihood: high
+      label:
+        en: Spoke magnet shifted or too far from the sensor
+        de: Speichenmagnet verrutscht oder zu weit vom Sensor entfernt
+    - id: sensor_dirty
+      likelihood: medium
+      label:
+        en: Dirty sensor or magnet
+        de: Verschmutzter Sensor oder Magnet
+    - id: sensor_cable_damaged
+      likelihood: medium
+      label:
+        en: Damaged sensor cable
+        de: Beschädigtes Sensorkabel
+    - id: magnet_missing
+      likelihood: low
+      label:
+        en: Spoke magnet lost
+        de: Speichenmagnet verloren
+  symptoms:
+    - en: Error 503 on the display, often after wheel removal or transport
+      de: Fehler 503 im Display, oft nach Radausbau oder Transport
+    - en: Motor assistance cuts out
+      de: Motorunterstützung schaltet ab
+    - en: No or implausible speed reading
+      de: Keine oder unplausible Geschwindigkeitsanzeige
+  self_help:
+    - en: Check that the spoke magnet is aligned with the mark on the sensor and only a few millimetres
+        (about 8-14 mm) away
+      de: Prüfen, ob der Speichenmagnet auf Höhe der Markierung am Sensor sitzt und nur wenige Millimeter
+        (ca. 8-14 mm) Abstand hat
+    - en: Clean sensor and magnet and retighten the magnet
+      de: Sensor und Magnet reinigen und den Magneten festziehen
+    - en: Restart the system
+      de: System neu starten
+    - en: If the error persists, have sensor and cable checked by a dealer
+      de: Bleibt der Fehler, Sensor und Kabel vom Händler prüfen lassen
+  behavior:
+    assist: off
+  repair:
+    difficulty: easy
+    diy_possible: true
+    dealer_tool_required: false
+    estimated_cost_eur:
+      - 5
+      - 80
+    estimated_hours:
+      - 0.1
+      - 1
+  related_codes:
+    - bosch:504
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=503&languageId=en
+    - https://ebike-mtb.com/en/ebike-error-codes/
+    - https://www.ebikediagnose.de/ratgeber/bosch-ebike-fehlercodes-komplette-liste
+    - https://upway.de/blogs/ratgeber/bosch-fehlercodes-ebike-loesungen
+    - https://www.fahrrad.de/pages/e-bike-fehlercodes
+- system: bosch
+  code: "504"
+  category: sensor
+  title:
+    en: Speed signal manipulation detected
+    de: Manipulation des Geschwindigkeitssignals erkannt
+  description:
+    en: The system has detected an implausible or manipulated speed signal, which Bosch interprets as
+      possible tuning. It can also be triggered by a wrongly positioned or non-original spoke
+      magnet. While the error is active, drive assistance is deliberately reduced. Repeated tuning
+      detections can require a dealer visit to fully unlock the system again.
+    de: Das System hat ein unplausibles oder manipuliertes Geschwindigkeitssignal erkannt, was Bosch als
+      mögliches Tuning wertet. Auslöser kann auch ein falsch positionierter oder nicht originaler
+      Speichenmagnet sein. Solange der Fehler aktiv ist, wird die Unterstützung gezielt reduziert.
+      Nach wiederholter Tuning-Erkennung kann ein Händlerbesuch nötig sein, um das System wieder
+      vollständig freizuschalten.
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - speed_sensor
+    - spoke_magnet
+    - drive_unit_software
+  common_causes:
+    - id: tuning_device
+      likelihood: high
+      label:
+        en: Tuning device manipulating the speed signal
+        de: Tuning-Modul, das das Geschwindigkeitssignal manipuliert
+    - id: magnet_misaligned
+      likelihood: medium
+      label:
+        en: Wrongly positioned spoke magnet
+        de: Falsch positionierter Speichenmagnet
+    - id: non_original_magnet
+      likelihood: medium
+      label:
+        en: Non-original magnet or sensor
+        de: Nicht originaler Magnet oder Sensor
+  symptoms:
+    - en: Error 504 on the display
+      de: Fehler 504 im Display
+    - en: Assistance noticeably reduced
+      de: Unterstützung spürbar reduziert
+    - en: Implausible speed values
+      de: Unplausible Geschwindigkeitswerte
+  self_help:
+    - en: Remove any tuning device
+      de: Vorhandenes Tuning-Modul entfernen
+    - en: Check the position of the spoke magnet and correct it
+      de: Position des Speichenmagneten prüfen und korrigieren
+    - en: Restart the system
+      de: System neu starten
+  behavior:
+    assist: reduced
+  repair:
+    difficulty: easy
+    diy_possible: true
+    dealer_tool_required: false
+  related_codes:
+    - bosch:503
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=504&languageId=en
+    - https://ebike-mtb.com/en/ebike-error-codes/
+    - https://www.ebikediagnose.de/ratgeber/bosch-ebike-fehlercodes-komplette-liste
+    - https://upway.de/blogs/ratgeber/bosch-fehlercodes-ebike-loesungen
+- system: bosch
+  code: "510"
+  category: sensor
+  title:
+    en: Internal sensor fault
+    de: Interner Sensorfehler
+  description:
+    en: A sensor inside the drive unit (e.g. torque or cadence measurement) is delivering faulty values.
+      Apart from restarting the system there is nothing a rider can do at the roadside; the dealer
+      must read out the drive with the diagnostic software. Sometimes a firmware update fixes the
+      problem, otherwise the drive unit has to be repaired or exchanged.
+    de: Ein Sensor innerhalb der Antriebseinheit (z. B. Drehmoment- oder Trittfrequenzmessung) liefert
+      fehlerhafte Werte. Außer einem Neustart kann man unterwegs nichts tun; der Händler muss den
+      Antrieb mit der Diagnosesoftware auslesen. Manchmal behebt ein Firmware-Update das Problem,
+      andernfalls muss die Antriebseinheit repariert oder getauscht werden.
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - drive_unit
+    - torque_sensor
+    - internal_sensors
+  common_causes:
+    - id: internal_sensor_defect
+      likelihood: medium
+      label:
+        en: Defective internal sensor
+        de: Defekter interner Sensor
+    - id: firmware_bug
+      likelihood: medium
+      label:
+        en: Firmware error
+        de: Firmware-Fehler
+    - id: moisture_in_drive_unit
+      likelihood: low
+      label:
+        en: Moisture inside the drive unit
+        de: Feuchtigkeit in der Antriebseinheit
+  symptoms:
+    - en: Error 510 on the display
+      de: Fehler 510 im Display
+    - en: Assistance absent or delayed after switch-on
+      de: Unterstützung fehlt oder setzt verzögert ein
+  self_help:
+    - en: Restart the system
+      de: System neu starten
+    - en: If the error persists, see a Bosch dealer
+      de: Bleibt der Fehler bestehen, einen Bosch-Händler aufsuchen
+  behavior:
+    assist: off
+  repair:
+    difficulty: hard
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - bosch:500
+    - bosch:511
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=510&languageId=en
+    - https://www.ebikediagnose.de/ratgeber/bosch-ebike-fehlercodes-komplette-liste
+    - https://upway.de/blogs/ratgeber/bosch-fehlercodes-ebike-loesungen
+    - https://www.fahrrad.de/pages/e-bike-fehlercodes
+- system: bosch
+  code: "511"
+  category: motor
+  title:
+    en: Internal drive unit fault (subsystem)
+    de: Interner Fehler der Antriebseinheit (Teilsystem)
+  description:
+    en: Like error 500, this code signals an internal problem in the drive unit, in this case a
+      different internal subsystem. Bosch's official remedy is limited to restarting the system. If
+      the code returns, the drive unit needs professional diagnosis with the Bosch dealer tool.
+    de: Wie Fehler 500 signalisiert dieser Code ein internes Problem der Antriebseinheit, hier ein
+      anderes internes Teilsystem. Die offizielle Abhilfe von Bosch beschränkt sich auf einen
+      Neustart. Kommt der Code wieder, braucht die Antriebseinheit eine professionelle Diagnose mit
+      dem Bosch-Händlertool.
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - drive_unit
+    - motor_electronics
+  common_causes:
+    - id: motor_electronics_defect
+      likelihood: medium
+      label:
+        en: Defect in the motor electronics
+        de: Defekt in der Motorelektronik
+    - id: software_hang
+      likelihood: medium
+      label:
+        en: Temporary software fault
+        de: Vorübergehender Softwarefehler
+  symptoms:
+    - en: Error 511 on the display
+      de: Fehler 511 im Display
+    - en: Assistance disturbed or absent
+      de: Unterstützung gestört oder fehlt
+  self_help:
+    - en: Restart the system
+      de: System neu starten
+    - en: If the error persists, see a Bosch dealer
+      de: Bleibt der Fehler bestehen, einen Bosch-Händler aufsuchen
+  behavior:
+    assist: unknown
+  repair:
+    difficulty: hard
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - bosch:500
+    - bosch:510
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=511&languageId=en
+    - https://www.fahrrad.de/pages/e-bike-fehlercodes
+- system: bosch
+  code: "530"
+  category: battery
+  title:
+    en: Battery fault
+    de: Akkufehler
+  description:
+    en: The drive cannot communicate correctly with the eBike battery. Frequent causes are dirty or
+      corroded battery contacts, a battery not seated properly, or a non-original battery; an
+      internal battery electronics fault is also possible. Bosch's official procedure is to switch
+      off, remove and reinsert the battery and restart.
+    de: "Der Antrieb kann nicht korrekt mit dem E-Bike-Akku kommunizieren. Häufige Ursachen sind
+      verschmutzte oder korrodierte Akkukontakte, ein nicht richtig eingerasteter Akku oder ein
+      nicht originaler Akku; auch ein Fehler der Akkuelektronik ist möglich. Das offizielle
+      Bosch-Vorgehen: ausschalten, Akku entnehmen und wieder einsetzen, neu starten."
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - battery
+    - battery_contacts
+    - battery_mount
+  common_causes:
+    - id: poor_battery_contact
+      likelihood: high
+      label:
+        en: Dirty or poor battery contacts
+        de: Verschmutzte oder schlechte Akkukontakte
+    - id: battery_not_seated
+      likelihood: medium
+      label:
+        en: Battery not properly seated
+        de: Akku nicht richtig eingesetzt
+    - id: non_original_battery
+      likelihood: medium
+      label:
+        en: Non-original battery
+        de: Nicht originaler Akku
+    - id: battery_electronics_defect
+      likelihood: low
+      label:
+        en: Defective battery electronics
+        de: Defekte Akkuelektronik
+  symptoms:
+    - en: Error 530 on the display
+      de: Fehler 530 im Display
+    - en: No motor assistance
+      de: Keine Motorunterstützung
+    - en: Battery level not displayed correctly
+      de: Akkustand wird nicht korrekt angezeigt
+  self_help:
+    - en: Switch the eBike off, remove the battery and reinsert it firmly
+      de: E-Bike ausschalten, Akku entnehmen und wieder fest einsetzen
+    - en: Clean the battery contacts carefully (dry cloth)
+      de: Akkukontakte vorsichtig reinigen (trockenes Tuch)
+    - en: Restart the system
+      de: System neu starten
+    - en: If the error persists, see a Bosch dealer
+      de: Bleibt der Fehler bestehen, einen Bosch-Händler aufsuchen
+  behavior:
+    assist: off
+  repair:
+    difficulty: easy
+    diy_possible: true
+    dealer_tool_required: false
+  related_codes:
+    - bosch:602
+    - bosch:603
+    - bosch:610
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=530&languageId=en
+    - https://ebike-mtb.com/en/ebike-error-codes/
+    - https://www.ebikediagnose.de/ratgeber/bosch-ebike-fehlercodes-komplette-liste
+    - https://upway.de/blogs/ratgeber/bosch-fehlercodes-ebike-loesungen
+    - https://www.fahrrad.de/pages/e-bike-fehlercodes
+- system: bosch
+  code: "531"
+  category: system
+  title:
+    en: Configuration error
+    de: Konfigurationsfehler
+  description:
+    en: "The stored system configuration does not match the installed components, for example after a
+      component was swapped or the wrong software variant was installed for the bike model. This
+      cannot be fixed at the roadside: the dealer has to correct the configuration with the Bosch
+      diagnostic software."
+    de: "Die hinterlegte Systemkonfiguration passt nicht zu den verbauten Komponenten, etwa nachdem eine
+      Komponente getauscht oder eine falsche Software-Variante für das Radmodell aufgespielt wurde.
+      Unterwegs ist das nicht zu beheben: Der Händler muss die Konfiguration mit der
+      Bosch-Diagnosesoftware korrigieren."
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - system_configuration
+    - drive_unit
+    - on_board_computer
+  common_causes:
+    - id: component_swap
+      likelihood: medium
+      label:
+        en: Component replaced without reconfiguration
+        de: Komponente ohne Neukonfiguration getauscht
+    - id: wrong_software_variant
+      likelihood: medium
+      label:
+        en: Wrong software variant for the bike model
+        de: Falsche Software-Variante für das Radmodell
+    - id: incompatible_component
+      likelihood: medium
+      label:
+        en: Incompatible component installed
+        de: Inkompatible Komponente verbaut
+  symptoms:
+    - en: Error 531 on the display
+      de: Fehler 531 im Display
+    - en: Error typically appears after a repair or component swap
+      de: Fehler tritt typischerweise nach Reparatur oder Komponententausch auf
+  self_help:
+    - en: Restart the system
+      de: System neu starten
+    - en: If the error persists, have the configuration corrected by a Bosch dealer
+      de: Bleibt der Fehler bestehen, Konfiguration beim Bosch-Händler korrigieren lassen
+  behavior:
+    assist: unknown
+  repair:
+    difficulty: medium
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - bosch:431
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=531&languageId=en
+    - https://www.ebikediagnose.de/ratgeber/bosch-ebike-fehlercodes-komplette-liste
+    - https://www.fahrrad.de/pages/e-bike-fehlercodes
+- system: bosch
+  code: "540"
+  category: motor
+  title:
+    en: Drive unit temperature error
+    de: Temperaturfehler der Antriebseinheit
+  description:
+    en: The drive unit is outside its permissible temperature range — usually too hot after long, steep
+      climbs in high ambient temperatures, more rarely too cold in winter. The system shuts
+      assistance down to protect itself. After cooling down (or warming up) and a restart, the drive
+      normally works again without repair.
+    de: Die Antriebseinheit befindet sich außerhalb des zulässigen Temperaturbereichs — meist zu heiß
+      nach langen, steilen Anstiegen bei hohen Außentemperaturen, seltener zu kalt im Winter. Das
+      System schaltet die Unterstützung zum Eigenschutz ab. Nach dem Abkühlen (bzw. Aufwärmen) und
+      einem Neustart funktioniert der Antrieb normalerweise ohne Reparatur wieder.
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - drive_unit
+  common_causes:
+    - id: overheating_sustained_load
+      likelihood: high
+      label:
+        en: Overheating from sustained high load (long climbs)
+        de: Überhitzung durch anhaltend hohe Last (lange Anstiege)
+    - id: high_ambient_temperature
+      likelihood: medium
+      label:
+        en: High ambient temperature / direct sun
+        de: Hohe Außentemperatur / direkte Sonne
+    - id: extreme_cold
+      likelihood: low
+      label:
+        en: Extreme cold
+        de: Extreme Kälte
+  symptoms:
+    - en: Error 540 on the display, typically during or after a hard climb
+      de: Fehler 540 im Display, typischerweise während oder nach einem harten Anstieg
+    - en: Assistance switches off
+      de: Unterstützung schaltet ab
+  self_help:
+    - en: Stop and switch the system off
+      de: Anhalten und System ausschalten
+    - en: Let the drive unit cool down (or warm up) for 10-15 minutes, ideally in the shade
+      de: Antriebseinheit 10-15 Minuten abkühlen (bzw. aufwärmen) lassen, am besten im Schatten
+    - en: Restart the system
+      de: System neu starten
+  behavior:
+    assist: off
+  repair:
+    difficulty: easy
+    diy_possible: true
+    dealer_tool_required: false
+  related_codes:
+    - bosch:605
+    - bosch:500
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=540&languageId=en
+    - https://www.ebikediagnose.de/ratgeber/bosch-ebike-fehlercodes-komplette-liste
+    - https://upway.de/blogs/ratgeber/bosch-fehlercodes-ebike-loesungen
+    - https://www.fahrrad.de/pages/e-bike-fehlercodes
+- system: bosch
+  code: "550"
+  category: system
+  title:
+    en: Impermissible load detected
+    de: Unzulässiger Verbraucher erkannt
+  description:
+    en: The system has detected an electrical consumer on the drive system that draws more power than
+      allowed — typically a third-party accessory such as a non-approved light or a USB device.
+      After removing the consumer and restarting, the error usually disappears. If it stays, the
+      wiring should be checked by a dealer.
+    de: Das System hat einen elektrischen Verbraucher am Antriebssystem erkannt, der mehr Strom zieht
+      als erlaubt — typischerweise ein Fremdzubehör wie eine nicht freigegebene Lampe oder ein
+      USB-Gerät. Nach dem Entfernen des Verbrauchers und einem Neustart verschwindet der Fehler in
+      der Regel. Bleibt er bestehen, sollte die Verkabelung vom Händler geprüft werden.
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - electrical_system
+    - accessory_port
+    - lighting_system
+  common_causes:
+    - id: third_party_accessory
+      likelihood: high
+      label:
+        en: Non-approved third-party accessory connected
+        de: Nicht freigegebenes Fremdzubehör angeschlossen
+    - id: defective_consumer
+      likelihood: medium
+      label:
+        en: Defective consumer drawing too much current
+        de: Defekter Verbraucher mit zu hoher Stromaufnahme
+    - id: wiring_short
+      likelihood: low
+      label:
+        en: Short circuit in the wiring
+        de: Kurzschluss in der Verkabelung
+  symptoms:
+    - en: Error 550 on the display
+      de: Fehler 550 im Display
+    - en: Error appears after fitting an accessory
+      de: Fehler tritt nach Anbau eines Zubehörteils auf
+  self_help:
+    - en: Disconnect recently added accessories (light, USB devices)
+      de: Kürzlich angeschlossenes Zubehör (Lampe, USB-Geräte) abklemmen
+    - en: Restart the system
+      de: System neu starten
+    - en: If the error persists, see a Bosch dealer
+      de: Bleibt der Fehler bestehen, einen Bosch-Händler aufsuchen
+  behavior:
+    assist: unknown
+  repair:
+    difficulty: easy
+    diy_possible: true
+    dealer_tool_required: false
+  related_codes:
+    - bosch:502
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=550&languageId=en
+    - https://www.ebikediagnose.de/ratgeber/bosch-ebike-fehlercodes-komplette-liste
+    - https://www.fahrrad.de/pages/e-bike-fehlercodes
+- system: bosch
+  code: "602"
+  category: battery
+  title:
+    en: Internal battery fault
+    de: Interner Akkufehler
+  description:
+    en: The battery management system reports an internal error in the eBike battery. Apart from a
+      restart there is no safe self-help; the battery electronics must be checked by a dealer. A
+      battery with an internal fault should not be opened or charged unattended.
+    de: Das Batteriemanagementsystem meldet einen internen Fehler des E-Bike-Akkus. Außer einem Neustart
+      gibt es keine sichere Selbsthilfe; die Akkuelektronik muss vom Händler geprüft werden. Ein
+      Akku mit internem Fehler sollte keinesfalls geöffnet oder unbeaufsichtigt geladen werden.
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - battery
+    - battery_management_system
+  common_causes:
+    - id: bms_defect
+      likelihood: medium
+      label:
+        en: Defective battery management electronics
+        de: Defekte Batteriemanagement-Elektronik
+    - id: cell_fault
+      likelihood: medium
+      label:
+        en: Fault in the battery cells
+        de: Fehler in den Akkuzellen
+    - id: temporary_glitch
+      likelihood: low
+      label:
+        en: Temporary electronics glitch
+        de: Vorübergehende Elektronikstörung
+  symptoms:
+    - en: Error 602 on the display, possibly while riding
+      de: Fehler 602 im Display, ggf. während der Fahrt
+    - en: Assistance fails or battery no longer charges properly
+      de: Unterstützung fällt aus oder Akku lädt nicht mehr richtig
+  self_help:
+    - en: Restart the system
+      de: System neu starten
+    - en: If the error persists, have the battery checked by a Bosch dealer
+      de: Bleibt der Fehler bestehen, Akku beim Bosch-Händler prüfen lassen
+  behavior:
+    assist: unknown
+  repair:
+    difficulty: hard
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - bosch:603
+    - bosch:530
+    - bosch:610
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=602&languageId=en
+    - https://www.ebikediagnose.de/ratgeber/bosch-ebike-fehlercodes-komplette-liste
+- system: bosch
+  code: "603"
+  category: battery
+  title:
+    en: Internal battery fault (subsystem)
+    de: Interner Akkufehler (Teilsystem)
+  description:
+    en: Like 602, this code indicates an internal fault in the eBike battery, in a different subsystem
+      of the battery electronics. Bosch's official measure is a restart; a persistent error means
+      the battery has to be diagnosed by a dealer and may need to be replaced.
+    de: Wie 602 zeigt dieser Code einen internen Fehler des E-Bike-Akkus an, hier in einem anderen
+      Teilbereich der Akkuelektronik. Die offizielle Bosch-Maßnahme ist ein Neustart; bei
+      dauerhaftem Fehler muss der Akku vom Händler diagnostiziert und ggf. ersetzt werden.
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - battery
+    - battery_management_system
+  common_causes:
+    - id: bms_defect
+      likelihood: medium
+      label:
+        en: Defective battery management electronics
+        de: Defekte Batteriemanagement-Elektronik
+    - id: cell_fault
+      likelihood: medium
+      label:
+        en: Fault in the battery cells
+        de: Fehler in den Akkuzellen
+  symptoms:
+    - en: Error 603 on the display
+      de: Fehler 603 im Display
+    - en: Battery or assistance behaves erratically
+      de: Akku oder Unterstützung verhält sich fehlerhaft
+  self_help:
+    - en: Restart the system
+      de: System neu starten
+    - en: If the error persists, have the battery checked by a Bosch dealer
+      de: Bleibt der Fehler bestehen, Akku beim Bosch-Händler prüfen lassen
+  behavior:
+    assist: unknown
+  repair:
+    difficulty: hard
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - bosch:602
+    - bosch:610
+    - bosch:640
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=603&languageId=en
+    - https://www.ebikediagnose.de/ratgeber/bosch-ebike-fehlercodes-komplette-liste
+- system: bosch
+  code: "605"
+  category: battery
+  title:
+    en: Battery temperature error
+    de: Temperaturfehler des Akkus
+  description:
+    en: The eBike battery is outside its permissible temperature range — too hot after charging or
+      riding in strong heat, or too cold in winter. The system blocks operation to protect the
+      cells. Once the battery has returned to normal temperature and the system is restarted,
+      everything usually works again.
+    de: Der E-Bike-Akku liegt außerhalb des zulässigen Temperaturbereichs — zu heiß nach dem Laden oder
+      Fahren bei starker Hitze, oder zu kalt im Winter. Das System blockiert den Betrieb zum Schutz
+      der Zellen. Sobald der Akku wieder normale Temperatur hat und das System neu gestartet wird,
+      funktioniert in der Regel alles wieder.
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - battery
+  common_causes:
+    - id: battery_overheated
+      likelihood: high
+      label:
+        en: Battery too hot (heat, sun, charging)
+        de: Akku zu heiß (Hitze, Sonne, Ladevorgang)
+    - id: battery_too_cold
+      likelihood: medium
+      label:
+        en: Battery too cold (winter operation)
+        de: Akku zu kalt (Winterbetrieb)
+  symptoms:
+    - en: Error 605 on the display
+      de: Fehler 605 im Display
+    - en: No assistance in extreme heat or cold
+      de: Keine Unterstützung bei extremer Hitze oder Kälte
+  self_help:
+    - en: Switch the system off
+      de: System ausschalten
+    - en: Let the battery cool down in the shade or warm up indoors
+      de: Akku im Schatten abkühlen oder drinnen aufwärmen lassen
+    - en: Restart the system
+      de: System neu starten
+  behavior:
+    assist: off
+  repair:
+    difficulty: easy
+    diy_possible: true
+    dealer_tool_required: false
+  related_codes:
+    - bosch:540
+    - bosch:602
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=605&languageId=en
+    - https://www.ebikediagnose.de/ratgeber/bosch-ebike-fehlercodes-komplette-liste
+    - https://upway.de/blogs/ratgeber/bosch-fehlercodes-ebike-loesungen
+- system: bosch
+  code: "610"
+  category: battery
+  title:
+    en: Battery voltage error
+    de: Spannungsfehler des Akkus
+  description:
+    en: The battery reports an implausible voltage, for example after deep discharge, due to ageing
+      cells or a fault in the battery electronics. Bosch's official remedy is a restart; a recurring
+      610 means the battery must be examined by a dealer. Deeply discharged batteries can sometimes
+      be revived by careful charging with the original charger.
+    de: Der Akku meldet eine unplausible Spannung, etwa nach Tiefentladung, durch gealterte Zellen oder
+      einen Fehler der Akkuelektronik. Die offizielle Bosch-Abhilfe ist ein Neustart; ein
+      wiederkehrender 610 bedeutet, dass der Akku vom Händler untersucht werden muss. Tiefentladene
+      Akkus lassen sich manchmal durch vorsichtiges Laden mit dem Original-Ladegerät wiederbeleben.
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - battery
+    - battery_management_system
+  common_causes:
+    - id: deep_discharge
+      likelihood: medium
+      label:
+        en: Deep discharge after long storage
+        de: Tiefentladung nach langer Lagerung
+    - id: cell_ageing
+      likelihood: medium
+      label:
+        en: Aged or weak battery cells
+        de: Gealterte oder schwache Akkuzellen
+    - id: bms_defect
+      likelihood: medium
+      label:
+        en: Defective battery electronics
+        de: Defekte Akkuelektronik
+  symptoms:
+    - en: Error 610 on the display
+      de: Fehler 610 im Display
+    - en: Battery range noticeably reduced or charge indicator implausible
+      de: Reichweite deutlich reduziert oder Ladeanzeige unplausibel
+  self_help:
+    - en: Restart the system
+      de: System neu starten
+    - en: Fully charge the battery with the original Bosch charger
+      de: Akku mit dem Original-Bosch-Ladegerät vollständig laden
+    - en: If the error persists, have the battery checked by a Bosch dealer
+      de: Bleibt der Fehler bestehen, Akku beim Bosch-Händler prüfen lassen
+  behavior:
+    assist: unknown
+  repair:
+    difficulty: hard
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - bosch:602
+    - bosch:603
+    - bosch:640
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=610&languageId=en
+- system: bosch
+  code: "620"
+  category: charger
+  title:
+    en: Charger fault
+    de: Fehler des Ladegeräts
+  description:
+    en: "The system has detected a fault in the charger. Bosch's official instruction is unusually clear
+      here: replace the charger and contact the dealer. Riding is not affected — the bike simply
+      cannot be charged with the defective unit. Before buying a replacement it is worth trying a
+      different mains socket and checking all plug connections."
+    de: "Das System hat einen Fehler des Ladegeräts erkannt. Die offizielle Bosch-Anweisung ist hier
+      ungewöhnlich eindeutig: Ladegerät ersetzen und Händler kontaktieren. Das Fahren ist nicht
+      beeinträchtigt — das Rad kann mit dem defekten Gerät nur nicht geladen werden. Vor dem Neukauf
+      lohnt es sich, eine andere Steckdose zu testen und alle Steckverbindungen zu prüfen."
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - charger
+    - charging_port
+  common_causes:
+    - id: charger_defect
+      likelihood: high
+      label:
+        en: Defective charger
+        de: Defektes Ladegerät
+    - id: power_supply_issue
+      likelihood: medium
+      label:
+        en: Problem with the mains supply or cable
+        de: Problem mit Steckdose oder Kabel
+  symptoms:
+    - en: Error 620 on the display
+      de: Fehler 620 im Display
+    - en: Battery does not charge or charging aborts
+      de: Akku lädt nicht oder Ladevorgang bricht ab
+  self_help:
+    - en: Try a different mains socket and check all plug connections
+      de: Andere Steckdose testen und alle Steckverbindungen prüfen
+    - en: If the fault remains, replace the charger with an original Bosch charger
+      de: Bleibt der Fehler, Ladegerät durch ein Original-Bosch-Ladegerät ersetzen
+  behavior:
+    assist: unaffected
+  repair:
+    difficulty: easy
+    diy_possible: true
+    dealer_tool_required: false
+    estimated_cost_eur:
+      - 70
+      - 150
+  related_codes:
+    - bosch:640
+    - bosch:610
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=620&languageId=en
+- system: bosch
+  code: "640"
+  category: battery
+  title:
+    en: Internal battery fault (cells)
+    de: Interner Akkufehler (Zellen)
+  description:
+    en: A further internal fault of the eBike battery, often observed in connection with deeply
+      discharged or damaged cells; the battery frequently refuses to charge. Bosch's official
+      measure is only a restart — beyond that the dealer must diagnose the battery. If cells are
+      damaged, replacing the battery is usually the only option.
+    de: Ein weiterer interner Fehler des E-Bike-Akkus, häufig im Zusammenhang mit tiefentladenen oder
+      beschädigten Zellen; oft lässt sich der Akku nicht mehr laden. Die offizielle Bosch-Maßnahme
+      ist nur ein Neustart — darüber hinaus muss der Händler den Akku diagnostizieren. Sind Zellen
+      beschädigt, bleibt in der Regel nur der Akkutausch.
+  applies_to:
+    - Gen2-Gen4 (BES2/BES3)
+    - "Displays: Intuvia/Purion/Kiox/Nyon"
+  affected_components:
+    - battery
+    - battery_cells
+    - battery_management_system
+  common_causes:
+    - id: deep_discharge
+      likelihood: medium
+      label:
+        en: Deeply discharged cells
+        de: Tiefentladene Zellen
+    - id: cell_damage
+      likelihood: medium
+      label:
+        en: Damaged battery cells
+        de: Beschädigte Akkuzellen
+    - id: bms_defect
+      likelihood: medium
+      label:
+        en: Defective battery electronics
+        de: Defekte Akkuelektronik
+  symptoms:
+    - en: Error 640 on the display
+      de: Fehler 640 im Display
+    - en: Battery does not charge
+      de: Akku lädt nicht
+    - en: No or unstable assistance
+      de: Keine oder instabile Unterstützung
+  self_help:
+    - en: Restart the system
+      de: System neu starten
+    - en: If the error persists, have the battery checked by a Bosch dealer — do not open the battery
+        yourself
+      de: Bleibt der Fehler bestehen, Akku beim Bosch-Händler prüfen lassen — Akku keinesfalls selbst
+        öffnen
+  behavior:
+    assist: unknown
+  repair:
+    difficulty: hard
+    diy_possible: false
+    dealer_tool_required: true
+    estimated_cost_eur:
+      - 500
+      - 900
+  related_codes:
+    - bosch:602
+    - bosch:603
+    - bosch:610
+    - bosch:620
+  sources:
+    - https://help.bosch-ebike.com/v1/error_code?externalID=640&languageId=en
+    - https://ebike-mtb.com/en/ebike-error-codes/

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or discussion
+    url: https://github.com/foerbsnavi/pedelex/discussions
+    about: Use Discussions for general questions, ideas, or coordinating coverage gaps.
+  - name: Security issue
+    url: https://github.com/foerbsnavi/pedelex/security/advisories/new
+    about: Report a security vulnerability privately. Do not open a public issue.

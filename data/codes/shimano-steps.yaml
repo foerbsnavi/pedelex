@@ -1,0 +1,1353 @@
+# Shimano STEPS — Warn- (W) und Fehlercodes (E), Generationen E5000-EP8
+# Welle 0: 22 Kerncodes. si.shimano.com blockt automatisierte Abrufe; Belege über
+# ebikeerror.com (spiegelt offizielle Shimano-Formulierungen) + unabhängige Zweitquellen.
+# Sortiert aufsteigend nach Code (E vor W, lexikographisch).
+
+- system: shimano-steps
+  code: E010
+  category: motor
+  title:
+    en: Abnormality detected in drive unit (system error)
+    de: Störung in der Antriebseinheit erkannt (Systemfehler)
+  description:
+    en: The drive unit has reported an internal abnormality and the system shuts assist off completely.
+      A power cycle sometimes clears the error if it was a temporary glitch. If E010 returns after
+      restarting, the drive unit needs to be diagnosed by a dealer, often including a firmware check
+      via E-TUBE.
+    de: Die Antriebseinheit hat eine interne Störung gemeldet, und das System schaltet die Unterstützung
+      komplett ab. Ein Neustart löscht den Fehler manchmal, wenn es sich um eine vorübergehende
+      Störung handelte. Kehrt E010 nach dem Neustart zurück, muss die Antriebseinheit vom Händler
+      diagnostiziert werden, oft inklusive Firmware-Prüfung über E-TUBE.
+  applies_to:
+    - E5000
+    - E6000
+    - E6100
+    - E7000
+    - E8000
+    - EP8
+  affected_components:
+    - drive_unit
+  common_causes:
+    - id: temporary_glitch
+      likelihood: medium
+      label:
+        en: Temporary internal fault cleared by a restart
+        de: Vorübergehende interne Störung, die ein Neustart behebt
+    - id: drive_unit_fault
+      likelihood: medium
+      label:
+        en: Hardware fault inside the drive unit
+        de: Hardwaredefekt in der Antriebseinheit
+    - id: firmware_issue
+      likelihood: low
+      label:
+        en: Outdated or faulty firmware
+        de: Veraltete oder fehlerhafte Firmware
+  symptoms:
+    - en: Assist stops completely
+      de: Unterstützung fällt komplett aus
+    - en: E010 shown in red on the display
+      de: E010 wird rot im Display angezeigt
+  self_help:
+    - en: Switch the system off, wait a few seconds, and switch it on again.
+      de: System ausschalten, einige Sekunden warten und wieder einschalten.
+    - en: If the error persists, stop using assist and contact a dealer.
+      de: Bleibt der Fehler, die Unterstützung nicht weiter nutzen und den Händler kontaktieren.
+  behavior:
+    assist: off
+  repair:
+    difficulty: hard
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - shimano-steps:E011
+    - shimano-steps:E013
+  sources:
+    - https://www.ebikeerror.com/shimano/e010-error-code.html
+    - https://biketrailspfannenstiel.ch/auskunft/shimano-fehlercode-liste/
+    - https://ebike-mtb.com/en/ebike-error-codes/
+    - https://qiolor.com/blogs/news/shimano-ebike-error-codes-explained
+- system: shimano-steps
+  code: E011
+  category: system
+  title:
+    en: System error detected
+    de: Systemfehler erkannt
+  description:
+    en: A general system error was detected and assist is switched off while riding. Like E010, the
+      first step is a simple power cycle, which resolves transient faults. If the error keeps
+      appearing, the system needs professional diagnosis at a dealer.
+    de: Es wurde ein allgemeiner Systemfehler erkannt, die Unterstützung wird während der Fahrt
+      abgeschaltet. Wie bei E010 ist der erste Schritt ein einfacher Neustart, der vorübergehende
+      Störungen behebt. Tritt der Fehler weiterhin auf, ist eine professionelle Diagnose beim
+      Händler nötig.
+  applies_to:
+    - E5000
+    - E6000
+    - E6100
+    - E7000
+    - E8000
+  affected_components:
+    - drive_unit
+    - system_electronics
+  common_causes:
+    - id: temporary_glitch
+      likelihood: medium
+      label:
+        en: Transient electronics fault
+        de: Vorübergehende Elektronikstörung
+    - id: internal_system_fault
+      likelihood: medium
+      label:
+        en: Persistent fault in the system electronics
+        de: Dauerhafte Störung in der Systemelektronik
+  symptoms:
+    - en: No assist while riding
+      de: Keine Unterstützung während der Fahrt
+    - en: Error code displayed after switching on
+      de: Fehlercode erscheint nach dem Einschalten
+  self_help:
+    - en: Turn the power off and on again.
+      de: System aus- und wieder einschalten.
+    - en: If the error persists, contact your dealer.
+      de: Bleibt der Fehler bestehen, den Händler kontaktieren.
+  behavior:
+    assist: off
+  repair:
+    difficulty: hard
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - shimano-steps:E010
+  sources:
+    - https://www.ebikeerror.com/shimano/e011-error-code.html
+- system: shimano-steps
+  code: E012
+  category: sensor
+  title:
+    en: Sensor initialization could not be completed
+    de: Sensor-Initialisierung konnte nicht abgeschlossen werden
+  description:
+    en: The sensor initialization at startup failed so severely that assist is switched off entirely,
+      unlike the milder warnings W013/W103. It usually stems from load on the pedals at power-on; a
+      persistent case can also point to incorrect chain tension. Restarting without pedal load is
+      the first remedy; otherwise the dealer should check chain tension and the sensor.
+    de: Die Sensor-Initialisierung beim Start ist so schwerwiegend fehlgeschlagen, dass die
+      Unterstützung — anders als bei den milderen Warnungen W013/W103 — ganz abgeschaltet wird.
+      Ursache ist meist Last auf den Pedalen beim Einschalten; hartnäckige Fälle können auch auf
+      falsche Kettenspannung hindeuten. Erster Schritt ist ein Neustart ohne Pedallast; andernfalls
+      sollte der Händler Kettenspannung und Sensor prüfen.
+  applies_to:
+    - E5000
+    - E6000
+    - E6100
+    - E7000
+    - E8000
+    - EP8
+  affected_components:
+    - torque_sensor
+    - drive_unit
+  common_causes:
+    - id: pedal_load_at_startup
+      likelihood: high
+      label:
+        en: Load on the pedals when switching on
+        de: Last auf den Pedalen beim Einschalten
+    - id: chain_tension_incorrect
+      likelihood: medium
+      label:
+        en: Incorrect chain tension (hub-gear/belt setups)
+        de: Falsche Kettenspannung (Nabenschaltungs-/Riemen-Aufbauten)
+    - id: torque_sensor_fault
+      likelihood: low
+      label:
+        en: Defective torque sensor
+        de: Defekter Drehmomentsensor
+  symptoms:
+    - en: No assist at all
+      de: Gar keine Unterstützung
+    - en: Error appears immediately after startup
+      de: Fehler erscheint sofort nach dem Start
+  self_help:
+    - en: Switch the battery off and on again while keeping your feet off the pedals.
+      de: Akku aus- und wieder einschalten und dabei die Füße von den Pedalen nehmen.
+    - en: If the error persists, have the dealer check chain tension and sensor.
+      de: Bleibt der Fehler, den Händler Kettenspannung und Sensor prüfen lassen.
+  behavior:
+    assist: off
+  repair:
+    difficulty: medium
+    diy_possible: false
+    dealer_tool_required: false
+  related_codes:
+    - shimano-steps:W013
+    - shimano-steps:W103
+    - shimano-steps:W012
+  sources:
+    - https://www.ebikeerror.com/shimano/e012-error-code.html
+    - https://qiolor.com/blogs/news/shimano-ebike-error-codes-explained
+    - https://ebike-mtb.com/en/ebike-error-codes/
+- system: shimano-steps
+  code: E013
+  category: motor
+  title:
+    en: Drive unit firmware abnormality
+    de: Firmware-Störung der Antriebseinheit
+  description:
+    en: An abnormality was detected in the firmware of the drive unit and assist is disabled. The
+      firmware must be restored with Shimano's E-TUBE diagnostic system, which is a dealer job. This
+      error often follows a failed or interrupted firmware update.
+    de: In der Firmware der Antriebseinheit wurde eine Störung erkannt, die Unterstützung ist
+      deaktiviert. Die Firmware muss mit Shimanos E-TUBE-Diagnosesystem wiederhergestellt werden —
+      eine Aufgabe für den Händler. Dieser Fehler tritt oft nach einem fehlgeschlagenen oder
+      unterbrochenen Firmware-Update auf.
+  applies_to:
+    - E5000
+    - E6000
+    - E6100
+    - E7000
+    - E8000
+    - EP8
+  affected_components:
+    - drive_unit
+    - firmware
+  common_causes:
+    - id: firmware_update_interrupted
+      likelihood: high
+      label:
+        en: Interrupted or failed firmware update
+        de: Unterbrochenes oder fehlgeschlagenes Firmware-Update
+    - id: firmware_corrupted
+      likelihood: medium
+      label:
+        en: Corrupted firmware data in the drive unit
+        de: Beschädigte Firmware-Daten in der Antriebseinheit
+  symptoms:
+    - en: No assist while riding
+      de: Keine Unterstützung während der Fahrt
+    - en: Error often appears after an update attempt
+      de: Fehler erscheint oft nach einem Update-Versuch
+  self_help:
+    - en: Restart the system once; if E013 returns, a dealer must restore the firmware via E-TUBE.
+      de: System einmal neu starten; kehrt E013 zurück, muss der Händler die Firmware über E-TUBE
+        wiederherstellen.
+  behavior:
+    assist: off
+  repair:
+    difficulty: medium
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - shimano-steps:E033
+    - shimano-steps:E043
+  sources:
+    - https://www.ebikeerror.com/shimano/e013-error-code.html
+    - https://biketrailspfannenstiel.ch/auskunft/shimano-fehlercode-liste/
+    - https://www.linexo.at/magazin/pflege-wartung/e-bike-fehlersuche-diese-fehlercodes-musst-du-kennen
+- system: shimano-steps
+  code: E014
+  category: sensor
+  title:
+    en: Abnormal speed signal from speed sensor
+    de: Abweichendes Geschwindigkeitssignal vom Speedsensor
+  description:
+    en: The speed sensor is delivering an implausible speed signal, and the system disables assist as a
+      tamper and safety protection. Typical triggers are a wrongly placed magnet or sensor — and
+      also speed tuning attempts. Mounting sensor and magnet correctly and taking a short test ride
+      normally clears the error.
+    de: Der Speedsensor liefert ein unplausibles Geschwindigkeitssignal, und das System deaktiviert die
+      Unterstützung als Manipulations- und Sicherheitsschutz. Typische Auslöser sind ein falsch
+      platzierter Magnet oder Sensor — und auch Tuning-Versuche. Sensor und Magnet korrekt montieren
+      und eine kurze Probefahrt machen behebt den Fehler normalerweise.
+  applies_to:
+    - E5000
+    - E6000
+    - E6100
+    - E7000
+    - E8000
+    - EP8
+  affected_components:
+    - speed_sensor
+    - spoke_magnet
+  common_causes:
+    - id: magnet_wrong_position
+      likelihood: high
+      label:
+        en: Speed sensor or magnet not in the correct position
+        de: Speedsensor oder Magnet nicht in der korrekten Position
+    - id: tuning_detected
+      likelihood: medium
+      label:
+        en: Speed manipulation (tuning device) detected
+        de: Geschwindigkeitsmanipulation (Tuning-Dongle) erkannt
+    - id: sensor_fault
+      likelihood: low
+      label:
+        en: Defective speed sensor
+        de: Defekter Speedsensor
+  symptoms:
+    - en: Assist switched off while riding
+      de: Unterstützung während der Fahrt abgeschaltet
+    - en: Implausible or jumping speed reading
+      de: Unplausible oder springende Geschwindigkeitsanzeige
+  self_help:
+    - en: Check that speed sensor and magnet are mounted in their correct positions.
+      de: Prüfen, ob Speedsensor und Magnet in der korrekten Position montiert sind.
+    - en: Remove any non-original attachments from the sensor area.
+      de: Nicht originale Anbauten im Sensorbereich entfernen.
+    - en: Restart and take a short test ride; if the error remains, see a dealer.
+      de: Neu starten und eine kurze Probefahrt machen; bleibt der Fehler, zum Händler.
+  behavior:
+    assist: off
+  repair:
+    difficulty: medium
+    diy_possible: true
+    dealer_tool_required: false
+  related_codes:
+    - shimano-steps:W011
+    - shimano-steps:W101
+  sources:
+    - https://www.ebikeerror.com/shimano/e014-error-code.html
+    - https://qiolor.com/blogs/news/shimano-ebike-error-codes-explained
+    - https://www.linexo.at/magazin/pflege-wartung/e-bike-fehlersuche-diese-fehlercodes-musst-du-kennen
+- system: shimano-steps
+  code: E020
+  category: communication
+  title:
+    en: Communication error between battery and drive unit
+    de: Kommunikationsfehler zwischen Akku und Antriebseinheit
+  description:
+    en: "The battery and the drive unit can no longer communicate, so assist stops. The cause is usually
+      in the connection path: loose plugs, corroded contacts or a damaged power cable between
+      battery mount and motor. Reseating the battery is worth a try; a persistent error requires the
+      dealer to inspect cabling and connectors."
+    de: "Akku und Antriebseinheit können nicht mehr miteinander kommunizieren, die Unterstützung fällt
+      aus. Die Ursache liegt meist im Verbindungsweg: lose Stecker, korrodierte Kontakte oder ein
+      beschädigtes Stromkabel zwischen Akkuhalterung und Motor. Den Akku neu einzusetzen ist einen
+      Versuch wert; bei anhaltendem Fehler muss der Händler Verkabelung und Steckverbindungen
+      prüfen."
+  applies_to:
+    - E5000
+    - E6000
+    - E6100
+    - E7000
+    - E8000
+    - EP8
+  affected_components:
+    - battery
+    - drive_unit
+    - power_cable
+    - connectors
+  common_causes:
+    - id: loose_connection
+      likelihood: high
+      label:
+        en: Loose or poorly seated battery/plug connection
+        de: Lose oder schlecht sitzende Akku-/Steckverbindung
+    - id: corroded_contacts
+      likelihood: medium
+      label:
+        en: Dirty or corroded contacts
+        de: Verschmutzte oder korrodierte Kontakte
+    - id: cable_damage
+      likelihood: medium
+      label:
+        en: Damaged power cord between battery and drive unit
+        de: Beschädigtes Stromkabel zwischen Akku und Antriebseinheit
+  symptoms:
+    - en: Assist fails completely
+      de: Unterstützung fällt komplett aus
+    - en: Error possibly intermittent over bumps
+      de: Fehler tritt eventuell stoßweise bei Erschütterungen auf
+  self_help:
+    - en: Remove the battery, check the contacts for dirt, and reseat it firmly.
+      de: Akku entnehmen, Kontakte auf Schmutz prüfen und wieder fest einsetzen.
+    - en: Restart the system.
+      de: System neu starten.
+    - en: If the error persists, have the dealer inspect the cable between battery and motor.
+      de: Bleibt der Fehler, das Kabel zwischen Akku und Motor vom Händler prüfen lassen.
+  behavior:
+    assist: off
+  repair:
+    difficulty: medium
+    diy_possible: false
+    dealer_tool_required: false
+  related_codes:
+    - shimano-steps:E024
+    - shimano-steps:E025
+  sources:
+    - https://www.ebikeerror.com/shimano/e020-error-code.html
+    - https://ebike-mtb.com/en/ebike-error-codes/
+    - https://survivalmesserguide.de/shimano-e-bike-fehlercode/
+    - https://biketrailspfannenstiel.ch/auskunft/shimano-fehlercode-liste/
+    - https://www.linexo.at/magazin/pflege-wartung/e-bike-fehlersuche-diese-fehlercodes-musst-du-kennen
+- system: shimano-steps
+  code: E021
+  category: battery
+  title:
+    en: Connected battery not supported by this system
+    de: Angeschlossener Akku wird von diesem System nicht unterstützt
+  description:
+    en: The battery connected to the drive unit meets Shimano's system standards but is not approved for
+      this particular configuration, so assist is disabled. This typically occurs when a battery
+      from a different STEPS series or an incompatible replacement is fitted. Only a battery
+      matching the system configuration will clear the error permanently.
+    de: Der an die Antriebseinheit angeschlossene Akku entspricht zwar den Shimano-Systemstandards, ist
+      aber für diese konkrete Konfiguration nicht freigegeben — die Unterstützung wird deaktiviert.
+      Das passiert typischerweise, wenn ein Akku einer anderen STEPS-Serie oder ein inkompatibler
+      Ersatz verbaut wird. Nur ein zur Systemkonfiguration passender Akku behebt den Fehler
+      dauerhaft.
+  applies_to:
+    - E5000
+    - E6000
+    - E6100
+    - E7000
+    - E8000
+  affected_components:
+    - battery
+    - battery_management_system
+  common_causes:
+    - id: incompatible_battery
+      likelihood: high
+      label:
+        en: Battery from another series or incompatible replacement fitted
+        de: Akku einer anderen Serie oder inkompatibler Ersatz verbaut
+    - id: configuration_mismatch
+      likelihood: medium
+      label:
+        en: System configuration does not match the installed battery
+        de: Systemkonfiguration passt nicht zum verbauten Akku
+  symptoms:
+    - en: No assist although the battery is charged
+      de: Keine Unterstützung, obwohl der Akku geladen ist
+    - en: Error appears right after switching on
+      de: Fehler erscheint direkt nach dem Einschalten
+  self_help:
+    - en: Turn the power off and on again.
+      de: System aus- und wieder einschalten.
+    - en: If you recently changed the battery, refit the original one and contact your dealer about
+        compatibility.
+      de: Wurde der Akku kürzlich getauscht, den Original-Akku einsetzen und den Händler zur
+        Kompatibilität befragen.
+  behavior:
+    assist: off
+  repair:
+    difficulty: medium
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - shimano-steps:E022
+    - shimano-steps:E025
+  sources:
+    - https://www.ebikeerror.com/shimano/e021-error-code.html
+    - https://www.linexo.at/magazin/pflege-wartung/e-bike-fehlersuche-diese-fehlercodes-musst-du-kennen
+- system: shimano-steps
+  code: E022
+  category: battery
+  title:
+    en: Connected battery does not conform to system standards
+    de: Angeschlossener Akku entspricht nicht den Systemstandards
+  description:
+    en: The battery connected to the drive unit does not conform to Shimano's system standards at all —
+      for example a third-party or wrong battery — and no system functions will start. After a power
+      cycle the error usually remains until a genuine, compatible battery is fitted. The dealer can
+      verify which battery belongs to the system.
+    de: Der an die Antriebseinheit angeschlossene Akku entspricht überhaupt nicht den
+      Shimano-Systemstandards — etwa ein Fremd- oder falscher Akku — und es startet keine
+      Systemfunktion. Nach einem Neustart bleibt der Fehler in der Regel bestehen, bis ein
+      originaler, kompatibler Akku eingesetzt wird. Der Händler kann prüfen, welcher Akku zum System
+      gehört.
+  applies_to:
+    - E5000
+    - E6000
+    - E6100
+    - E7000
+    - E8000
+  affected_components:
+    - battery
+  common_causes:
+    - id: third_party_battery
+      likelihood: high
+      label:
+        en: Non-genuine or non-conforming battery connected
+        de: Nicht originaler oder nicht konformer Akku angeschlossen
+    - id: battery_electronics_fault
+      likelihood: low
+      label:
+        en: Faulty battery electronics preventing identification
+        de: Defekte Akkuelektronik verhindert die Erkennung
+  symptoms:
+    - en: System does not start at all
+      de: System startet überhaupt nicht
+    - en: Error appears immediately at power-on
+      de: Fehler erscheint sofort beim Einschalten
+  self_help:
+    - en: Turn the power off and on again.
+      de: System aus- und wieder einschalten.
+    - en: Fit the original battery if a different one was installed; otherwise contact the dealer.
+      de: Original-Akku einsetzen, falls ein anderer verbaut wurde; sonst den Händler kontaktieren.
+  behavior:
+    assist: off
+  repair:
+    difficulty: medium
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - shimano-steps:E021
+    - shimano-steps:E025
+  sources:
+    - https://www.ebikeerror.com/shimano/e022-error-code.html
+    - https://www.linexo.at/magazin/pflege-wartung/e-bike-fehlersuche-diese-fehlercodes-musst-du-kennen
+- system: shimano-steps
+  code: E023
+  category: battery
+  title:
+    en: Electrical abnormality inside the battery
+    de: Elektrische Störung im Inneren des Akkus
+  description:
+    en: The battery management system has detected an internal electrical fault and blocks all system
+      functions for safety. A single occurrence can sometimes be cleared by a power cycle; a
+      recurring E023 points to a genuine battery defect. In that case the battery must be inspected
+      and usually replaced — do not attempt to open it.
+    de: Das Batteriemanagement hat einen internen elektrischen Fehler erkannt und blockiert aus
+      Sicherheitsgründen alle Systemfunktionen. Ein einmaliges Auftreten lässt sich manchmal per
+      Neustart löschen; ein wiederkehrender E023 deutet auf einen echten Akkudefekt hin. Dann muss
+      der Akku geprüft und meist ersetzt werden — keinesfalls selbst öffnen.
+  applies_to:
+    - E5000
+    - E6000
+    - E6100
+    - E7000
+    - E8000
+    - EP8
+  affected_components:
+    - battery
+    - battery_management_system
+  common_causes:
+    - id: battery_internal_fault
+      likelihood: high
+      label:
+        en: Internal electrical defect in the battery
+        de: Interner elektrischer Defekt im Akku
+    - id: temporary_glitch
+      likelihood: low
+      label:
+        en: One-off protection trip cleared by restart
+        de: Einmalige Schutzauslösung, durch Neustart behebbar
+  symptoms:
+    - en: System does not start
+      de: System startet nicht
+    - en: Battery LED shows an error pattern while charging
+      de: Akku-LED zeigt beim Laden ein Fehlermuster
+  self_help:
+    - en: Turn the power off and on again once.
+      de: System einmal aus- und wieder einschalten.
+    - en: If the error returns, stop using the battery and have it checked by a dealer.
+      de: Kehrt der Fehler zurück, den Akku nicht weiter nutzen und vom Händler prüfen lassen.
+  behavior:
+    assist: off
+  repair:
+    difficulty: hard
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - shimano-steps:E024
+    - shimano-steps:W020
+  sources:
+    - https://www.ebikeerror.com/shimano/e023-error-code.html
+    - https://doctibike.com/en/blog/list-of-shimano-error-codes-symptoms-and-solutions-n61
+    - https://biketrailspfannenstiel.ch/auskunft/shimano-fehlercode-liste/
+- system: shimano-steps
+  code: E024
+  category: battery
+  title:
+    en: Battery overcurrent protection triggered
+    de: Überstromschutz des Akkus ausgelöst
+  description:
+    en: The battery's overcurrent protection has tripped, combined with a communication error towards
+      the bike system, and no system functions will start. Causes range from loose cables to a short
+      circuit in the wiring or a battery fault. The dealer needs to check all connections; if the
+      error remains, deeper diagnosis of battery and wiring is required.
+    de: Der Überstromschutz des Akkus hat ausgelöst, verbunden mit einem Kommunikationsfehler zum
+      Fahrradsystem — es startet keine Systemfunktion. Die Ursachen reichen von losen Kabeln über
+      einen Kurzschluss in der Verkabelung bis zu einem Akkudefekt. Der Händler muss alle
+      Verbindungen prüfen; bleibt der Fehler, ist eine tiefere Diagnose von Akku und Verkabelung
+      nötig.
+  applies_to:
+    - E5000
+    - E6000
+    - E6100
+    - E7000
+    - E8000
+  affected_components:
+    - battery
+    - battery_management_system
+    - wiring
+  common_causes:
+    - id: loose_connection
+      likelihood: medium
+      label:
+        en: Loose or faulty cable connections
+        de: Lose oder fehlerhafte Kabelverbindungen
+    - id: short_circuit
+      likelihood: medium
+      label:
+        en: Short circuit or damage in the wiring
+        de: Kurzschluss oder Beschädigung in der Verkabelung
+    - id: battery_internal_fault
+      likelihood: medium
+      label:
+        en: Fault in the battery protection electronics
+        de: Defekt in der Schutzelektronik des Akkus
+  symptoms:
+    - en: System will not start
+      de: System lässt sich nicht starten
+    - en: Error possibly appears during or after charging
+      de: Fehler erscheint eventuell beim oder nach dem Laden
+  self_help:
+    - en: Disconnect the charger, reseat the battery and try a restart.
+      de: Ladegerät trennen, Akku neu einsetzen und einen Neustart versuchen.
+    - en: If the error persists, have the dealer check all cable connections.
+      de: Bleibt der Fehler, alle Kabelverbindungen vom Händler prüfen lassen.
+  behavior:
+    assist: off
+  repair:
+    difficulty: hard
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - shimano-steps:E020
+    - shimano-steps:E023
+  sources:
+    - https://www.ebikeerror.com/shimano/e024-error-code.html
+    - https://doctibike.com/en/blog/list-of-shimano-error-codes-symptoms-and-solutions-n61
+- system: shimano-steps
+  code: E025
+  category: battery
+  title:
+    en: Battery does not recognize the drive unit
+    de: Akku erkennt die Antriebseinheit nicht
+  description:
+    en: The battery cannot identify the connected drive unit, so no system functions start. This occurs
+      when a non-genuine drive unit is connected or when the power cord between battery and motor
+      has come loose or is damaged. The dealer verifies that genuine, matching components are
+      connected and inspects the power cord.
+    de: Der Akku kann die angeschlossene Antriebseinheit nicht identifizieren, daher startet keine
+      Systemfunktion. Das passiert, wenn eine nicht originale Antriebseinheit angeschlossen ist oder
+      das Stromkabel zwischen Akku und Motor gelöst oder beschädigt ist. Der Händler prüft, ob
+      originale, zueinander passende Komponenten verbunden sind, und kontrolliert das Stromkabel.
+  applies_to:
+    - E5000
+    - E6000
+    - E6100
+    - E7000
+    - E8000
+  affected_components:
+    - battery
+    - drive_unit
+    - power_cable
+  common_causes:
+    - id: power_cord_disconnected
+      likelihood: high
+      label:
+        en: Power cord between battery and drive unit loose or damaged
+        de: Stromkabel zwischen Akku und Antriebseinheit lose oder beschädigt
+    - id: non_genuine_component
+      likelihood: medium
+      label:
+        en: Non-genuine drive unit or battery in the system
+        de: Nicht originale Antriebseinheit oder Akku im System
+  symptoms:
+    - en: System does not start at all
+      de: System startet überhaupt nicht
+    - en: Battery LED may flash an error pattern
+      de: Akku-LED blinkt eventuell ein Fehlermuster
+  self_help:
+    - en: Reseat the battery and restart once.
+      de: Akku neu einsetzen und einmal neu starten.
+    - en: If the error remains, have the dealer inspect the power cord and component pairing.
+      de: Bleibt der Fehler, Stromkabel und Komponenten-Zuordnung vom Händler prüfen lassen.
+  behavior:
+    assist: off
+  repair:
+    difficulty: medium
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - shimano-steps:E020
+    - shimano-steps:E021
+    - shimano-steps:E022
+  sources:
+    - https://www.ebikeerror.com/shimano/e025-error-code.html
+    - https://doctibike.com/en/blog/list-of-shimano-error-codes-symptoms-and-solutions-n61
+- system: shimano-steps
+  code: E033
+  category: system
+  title:
+    en: Firmware not supported by this system
+    de: Firmware wird von diesem System nicht unterstützt
+  description:
+    en: The firmware currently installed on one of the components is not supported by the overall
+      system, so assist is disabled. This typically happens when components with mismatched firmware
+      versions are combined, for example after a parts swap or a partial update. Updating all
+      components to the latest compatible firmware via E-TUBE PROJECT resolves the conflict.
+    de: Die aktuell installierte Firmware einer Komponente wird vom Gesamtsystem nicht unterstützt,
+      daher ist die Unterstützung deaktiviert. Das passiert typischerweise, wenn Komponenten mit
+      unpassenden Firmware-Ständen kombiniert werden, etwa nach einem Teiletausch oder einem
+      unvollständigen Update. Ein Update aller Komponenten auf die neueste kompatible Firmware über
+      E-TUBE PROJECT löst den Konflikt.
+  applies_to:
+    - E5000
+    - E6000
+    - E6100
+    - E7000
+    - E8000
+    - EP8
+  affected_components:
+    - firmware
+    - system_electronics
+  common_causes:
+    - id: firmware_version_mismatch
+      likelihood: high
+      label:
+        en: Mismatched firmware versions between components
+        de: Unpassende Firmware-Stände zwischen Komponenten
+    - id: partial_update
+      likelihood: medium
+      label:
+        en: Only some components were updated
+        de: Nur ein Teil der Komponenten wurde aktualisiert
+  symptoms:
+    - en: No assist while riding
+      de: Keine Unterstützung während der Fahrt
+    - en: Error appears after an update or component swap
+      de: Fehler erscheint nach einem Update oder Komponententausch
+  self_help:
+    - en: Check for firmware updates for all components in the E-TUBE PROJECT app.
+      de: In der E-TUBE-PROJECT-App nach Firmware-Updates für alle Komponenten suchen.
+    - en: If updating via app is not possible, have the dealer bring all components to the latest version.
+      de: Ist ein Update per App nicht möglich, alle Komponenten vom Händler auf den neuesten Stand
+        bringen lassen.
+  behavior:
+    assist: off
+  repair:
+    difficulty: medium
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - shimano-steps:E013
+    - shimano-steps:E043
+    - shimano-steps:W032
+  sources:
+    - https://www.ebikeerror.com/shimano/e033-error-code.html
+    - https://qiolor.com/blogs/news/shimano-ebike-error-codes-explained
+    - https://www.linexo.at/magazin/pflege-wartung/e-bike-fehlersuche-diese-fehlercodes-musst-du-kennen
+- system: shimano-steps
+  code: E043
+  category: system
+  title:
+    en: Firmware on this product possibly corrupted
+    de: Firmware dieses Produkts möglicherweise beschädigt
+  description:
+    en: The system has detected an abnormality in the firmware of a component; part of the firmware may
+      be corrupted. Assist is disabled until the firmware is restored with Shimano's diagnostic
+      tools, which requires a dealer or distributor. Corruption of this kind is often the result of
+      an interrupted update process.
+    de: Das System hat eine Störung in der Firmware einer Komponente erkannt; ein Teil der Firmware ist
+      möglicherweise beschädigt. Die Unterstützung bleibt deaktiviert, bis die Firmware mit Shimanos
+      Diagnosewerkzeugen wiederhergestellt wird — das erfordert Händler oder Distributor. Solche
+      Beschädigungen entstehen oft durch einen unterbrochenen Update-Vorgang.
+  applies_to:
+    - E5000
+    - E6000
+    - E6100
+    - E7000
+    - E8000
+    - EP8
+  affected_components:
+    - firmware
+    - system_electronics
+  common_causes:
+    - id: firmware_corrupted
+      likelihood: high
+      label:
+        en: Corrupted firmware data on the component
+        de: Beschädigte Firmware-Daten auf der Komponente
+    - id: firmware_update_interrupted
+      likelihood: medium
+      label:
+        en: Update process interrupted (power loss, connection drop)
+        de: Update-Vorgang unterbrochen (Stromverlust, Verbindungsabbruch)
+  symptoms:
+    - en: No assist while riding
+      de: Keine Unterstützung während der Fahrt
+    - en: Error persists across restarts
+      de: Fehler bleibt über Neustarts hinweg bestehen
+  self_help:
+    - en: Restart the system once; if E043 remains, contact your dealer — the firmware must be restored
+        professionally.
+      de: System einmal neu starten; bleibt E043 bestehen, den Händler kontaktieren — die Firmware muss
+        professionell wiederhergestellt werden.
+  behavior:
+    assist: off
+  repair:
+    difficulty: medium
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - shimano-steps:E013
+    - shimano-steps:E033
+  sources:
+    - https://www.ebikeerror.com/shimano/e043-error-code.html
+- system: shimano-steps
+  code: W010
+  category: motor
+  title:
+    en: Drive unit overtemperature
+    de: Übertemperatur der Antriebseinheit
+  description:
+    en: The drive unit has detected an internal temperature above its normal operating range, typically
+      after long steep climbs in high assist modes or in hot weather. To protect the motor, the
+      system reduces the assist power until the unit has cooled down. This is a protective warning,
+      not a defect.
+    de: Die Antriebseinheit hat eine Innentemperatur oberhalb des normalen Betriebsbereichs erkannt,
+      typischerweise nach langen steilen Anstiegen in hohen Unterstützungsstufen oder bei Hitze. Zum
+      Schutz des Motors reduziert das System die Unterstützungsleistung, bis die Einheit abgekühlt
+      ist. Es handelt sich um eine Schutzwarnung, nicht um einen Defekt.
+  applies_to:
+    - E5000
+    - E6000
+    - E6100
+    - E7000
+    - E8000
+  affected_components:
+    - drive_unit
+  common_causes:
+    - id: sustained_high_load
+      likelihood: high
+      label:
+        en: Prolonged riding under high load (steep climbs, high assist mode)
+        de: Längere Fahrt unter hoher Last (steile Anstiege, hohe Unterstützungsstufe)
+    - id: high_ambient_temperature
+      likelihood: medium
+      label:
+        en: High ambient temperature or direct sunlight
+        de: Hohe Außentemperatur oder direkte Sonneneinstrahlung
+    - id: cooling_obstructed
+      likelihood: low
+      label:
+        en: Heat dissipation of the drive unit obstructed (dirt, covers)
+        de: Wärmeabfuhr der Antriebseinheit behindert (Schmutz, Abdeckungen)
+  symptoms:
+    - en: Assist power noticeably weaker than usual
+      de: Unterstützung spürbar schwächer als gewohnt
+    - en: W010 shown on the display during or after hard climbs
+      de: W010 erscheint während oder nach harten Anstiegen im Display
+  self_help:
+    - en: Take a break and let the motor cool down; do not continue riding with assist enabled until the
+        temperature has dropped.
+      de: Pause machen und den Motor abkühlen lassen; nicht mit aktivierter Unterstützung weiterfahren,
+        bis die Temperatur gesunken ist.
+    - en: Use a lower assist mode on long climbs to avoid recurrence.
+      de: An langen Anstiegen eine niedrigere Unterstützungsstufe wählen, um ein Wiederauftreten zu
+        vermeiden.
+    - en: If the warning appears repeatedly without heavy load, have the system checked by a dealer.
+      de: Erscheint die Warnung wiederholt ohne starke Belastung, das System vom Händler prüfen lassen.
+  behavior:
+    assist: reduced
+  repair:
+    difficulty: easy
+    diy_possible: true
+    dealer_tool_required: false
+  related_codes:
+    - shimano-steps:W100
+    - shimano-steps:W020
+  sources:
+    - https://www.ebikeerror.com/shimano/w010-error-code.html
+    - https://qiolor.com/blogs/news/shimano-ebike-error-codes-explained
+    - https://ebike-mtb.com/en/ebike-error-codes/
+    - https://www.linexo.at/magazin/pflege-wartung/e-bike-fehlersuche-diese-fehlercodes-musst-du-kennen
+- system: shimano-steps
+  code: W011
+  category: sensor
+  title:
+    en: No speed signal from speed sensor
+    de: Kein Geschwindigkeitssignal vom Speedsensor
+  description:
+    en: The system is not receiving a bicycle speed signal from the speed sensor. Because the system
+      cannot verify the riding speed, the maximum speed up to which assist is provided is lowered.
+      The usual cause is a shifted spoke magnet or a wrongly positioned or disconnected sensor.
+    de: Das System erhält kein Geschwindigkeitssignal vom Speedsensor. Da die Fahrgeschwindigkeit nicht
+      überprüft werden kann, wird die Maximalgeschwindigkeit, bis zu der unterstützt wird,
+      abgesenkt. Übliche Ursache ist ein verrutschter Speichenmagnet oder ein falsch positionierter
+      bzw. abgesteckter Sensor.
+  applies_to:
+    - E5000
+    - E6000
+    - E6100
+    - E7000
+    - E8000
+  affected_components:
+    - speed_sensor
+    - spoke_magnet
+    - sensor_cable
+  common_causes:
+    - id: magnet_misaligned
+      likelihood: high
+      label:
+        en: Spoke or disc magnet shifted out of position
+        de: Speichen- bzw. Scheibenmagnet verrutscht
+    - id: sensor_misaligned
+      likelihood: medium
+      label:
+        en: Speed sensor not mounted in the correct location or wrong gap to magnet
+        de: Speedsensor nicht an der korrekten Position montiert oder falscher Abstand zum Magneten
+    - id: cable_damage
+      likelihood: medium
+      label:
+        en: Damaged or disconnected sensor cable
+        de: Beschädigtes oder abgestecktes Sensorkabel
+  symptoms:
+    - en: Assist cuts out above a low speed
+      de: Unterstützung endet schon bei niedriger Geschwindigkeit
+    - en: Speed reading missing or implausible on the display
+      de: Geschwindigkeitsanzeige fehlt oder ist unplausibel
+  self_help:
+    - en: Check that the spoke magnet sits directly opposite the sensor and has not rotated away; realign
+        it if needed.
+      de: Prüfen, ob der Speichenmagnet direkt gegenüber dem Sensor sitzt und nicht verdreht ist; bei
+        Bedarf ausrichten.
+    - en: Restart the system after correcting the magnet position.
+      de: Nach dem Ausrichten des Magneten das System neu starten.
+    - en: If the warning remains, have the sensor mounting and wiring checked by a dealer.
+      de: Bleibt die Warnung bestehen, Sensormontage und Verkabelung vom Händler prüfen lassen.
+  behavior:
+    assist: reduced
+  repair:
+    difficulty: easy
+    diy_possible: true
+    dealer_tool_required: false
+  related_codes:
+    - shimano-steps:W101
+    - shimano-steps:E014
+  sources:
+    - https://www.ebikeerror.com/shimano/w011-error-code.html
+    - https://qiolor.com/blogs/news/shimano-ebike-error-codes-explained
+    - https://ebike-mtb.com/en/ebike-error-codes/
+    - https://www.linexo.at/magazin/pflege-wartung/e-bike-fehlersuche-diese-fehlercodes-musst-du-kennen
+- system: shimano-steps
+  code: W012
+  category: motor
+  title:
+    en: Crank possibly installed in wrong direction
+    de: Kurbel möglicherweise falsch herum montiert
+  description:
+    en: The system suspects that the crank arms were mounted in the wrong orientation, which distorts
+      the torque measurement. This warning typically appears after assembly or crank service. The
+      crank must be re-installed in the specified direction and the system restarted.
+    de: Das System vermutet, dass die Kurbelarme in falscher Ausrichtung montiert wurden, wodurch die
+      Drehmomentmessung verfälscht wird. Diese Warnung tritt typischerweise nach Montage- oder
+      Kurbelarbeiten auf. Die Kurbel muss in der vorgegebenen Richtung neu montiert und das System
+      neu gestartet werden.
+  applies_to:
+    - E5000
+    - E6000
+    - E6100
+    - E7000
+    - E8000
+  affected_components:
+    - crank_arm
+    - torque_sensor
+  common_causes:
+    - id: crank_wrong_orientation
+      likelihood: high
+      label:
+        en: Crank arm mounted in the wrong direction during assembly
+        de: Kurbelarm bei der Montage falsch herum angebracht
+    - id: startup_under_load
+      likelihood: medium
+      label:
+        en: Heavy pedal load at power-on confusing the sensor check
+        de: Starke Pedallast beim Einschalten, die die Sensorprüfung stört
+  symptoms:
+    - en: W012 appears after crank or drivetrain work
+      de: W012 erscheint nach Arbeiten an Kurbel oder Antrieb
+    - en: Assist feels wrong or restricted
+      de: Unterstützung fühlt sich falsch an oder ist eingeschränkt
+  self_help:
+    - en: Restart the system once without any load on the pedals.
+      de: System einmal ohne Last auf den Pedalen neu starten.
+    - en: If the warning returns, have the crank orientation checked and corrected by a dealer.
+      de: Kehrt die Warnung zurück, Kurbelausrichtung vom Händler prüfen und korrigieren lassen.
+  behavior:
+    assist: unknown
+  repair:
+    difficulty: medium
+    diy_possible: false
+    dealer_tool_required: false
+  related_codes:
+    - shimano-steps:W013
+    - shimano-steps:E012
+  sources:
+    - https://www.ebikeerror.com/shimano/w012-error-code.html
+    - https://ebike-mtb.com/en/ebike-error-codes/
+    - https://survivalmesserguide.de/shimano-e-bike-fehlercode/
+- system: shimano-steps
+  code: W013
+  category: sensor
+  title:
+    en: Torque sensor initialization failed
+    de: Initialisierung des Drehmomentsensors fehlgeschlagen
+  description:
+    en: The torque sensor could not complete its self-calibration when the system was switched on, most
+      often because a foot was resting on a pedal during startup. Assist is weaker than normal until
+      the sensor is initialized correctly. This is the most common Shimano STEPS warning and is
+      almost always fixed by restarting without pedal load.
+    de: Der Drehmomentsensor konnte seine Selbstkalibrierung beim Einschalten nicht abschließen, meist
+      weil beim Start ein Fuß auf dem Pedal ruhte. Die Unterstützung ist schwächer als normal, bis
+      der Sensor korrekt initialisiert wurde. Dies ist die häufigste STEPS-Warnung und lässt sich
+      fast immer durch einen Neustart ohne Pedallast beheben.
+  applies_to:
+    - E5000
+    - E6000
+    - E6100
+    - E7000
+    - E8000
+  affected_components:
+    - torque_sensor
+  common_causes:
+    - id: pedal_load_at_startup
+      likelihood: high
+      label:
+        en: Foot on the pedal while switching the system on
+        de: Fuß auf dem Pedal beim Einschalten des Systems
+    - id: initialization_failed
+      likelihood: medium
+      label:
+        en: Sensor self-calibration interrupted (vibration, load on crank)
+        de: Selbstkalibrierung des Sensors unterbrochen (Erschütterung, Last auf der Kurbel)
+    - id: torque_sensor_fault
+      likelihood: low
+      label:
+        en: Persistent torque sensor fault in the drive unit
+        de: Dauerhafter Drehmomentsensor-Defekt in der Antriebseinheit
+  symptoms:
+    - en: Assist noticeably weaker than normal
+      de: Unterstützung deutlich schwächer als normal
+    - en: W013 appears right after switching on
+      de: W013 erscheint direkt nach dem Einschalten
+  self_help:
+    - en: Switch the system off via the battery power button.
+      de: System über die Ein/Aus-Taste des Akkus ausschalten.
+    - en: Switch it back on without touching the pedals and without load on the crank.
+      de: Wieder einschalten, ohne die Pedale zu berühren und ohne Last auf der Kurbel.
+    - en: If the warning persists after several clean restarts, contact your dealer.
+      de: Bleibt die Warnung nach mehreren sauberen Neustarts bestehen, den Händler kontaktieren.
+  behavior:
+    assist: reduced
+  repair:
+    difficulty: easy
+    diy_possible: true
+    dealer_tool_required: false
+  related_codes:
+    - shimano-steps:W103
+    - shimano-steps:E012
+    - shimano-steps:W012
+  sources:
+    - https://www.ebikeerror.com/shimano/w013-error-code.html
+    - https://ebike-mtb.com/en/ebike-error-codes/
+    - https://qiolor.com/blogs/news/shimano-ebike-error-codes-explained
+    - https://survivalmesserguide.de/shimano-e-bike-fehlercode/
+    - https://biketrailspfannenstiel.ch/auskunft/shimano-fehlercode-liste/
+    - https://www.linexo.at/magazin/pflege-wartung/e-bike-fehlersuche-diese-fehlercodes-musst-du-kennen
+- system: shimano-steps
+  code: W020
+  category: battery
+  title:
+    en: Battery temperature outside operating range
+    de: Akkutemperatur außerhalb des Betriebsbereichs
+  description:
+    en: The battery temperature has left the guaranteed operating range, so the battery shuts off its
+      output and the system will not start. This happens in freezing cold as well as in strong heat.
+      Once the battery has returned to a moderate internal temperature, the system works normally
+      again.
+    de: Die Akkutemperatur hat den garantierten Betriebsbereich verlassen, daher schaltet der Akku seine
+      Ausgabe ab und das System startet nicht. Das passiert sowohl bei Frost als auch bei starker
+      Hitze. Sobald der Akku wieder eine moderate Innentemperatur erreicht hat, funktioniert das
+      System normal.
+  applies_to:
+    - E5000
+    - E6000
+    - E6100
+    - E7000
+    - E8000
+    - EP8
+  affected_components:
+    - battery
+    - battery_management_system
+  common_causes:
+    - id: battery_too_cold
+      likelihood: high
+      label:
+        en: Battery too cold (e.g. stored outside in winter)
+        de: Akku zu kalt (z. B. im Winter draußen gelagert)
+    - id: battery_too_hot
+      likelihood: medium
+      label:
+        en: Battery overheated (direct sun, hot vehicle, charging heat)
+        de: Akku überhitzt (direkte Sonne, heißes Fahrzeug, Ladewärme)
+  symptoms:
+    - en: System does not start or battery output stops
+      de: System startet nicht oder Akkuausgabe bricht ab
+    - en: Warning appears in very cold or very hot conditions
+      de: Warnung erscheint bei großer Kälte oder Hitze
+  self_help:
+    - en: "If too cold: bring the battery indoors and let it warm up to room temperature before use."
+      de: "Bei Kälte: Akku in den Innenraum bringen und vor der Nutzung auf Zimmertemperatur erwärmen
+        lassen."
+    - en: "If too hot: place the battery in a cool, shaded spot until its internal temperature drops."
+      de: "Bei Hitze: Akku an einen kühlen, schattigen Ort legen, bis die Innentemperatur sinkt."
+    - en: If the warning persists at normal temperatures, have the battery checked by a dealer.
+      de: Bleibt die Warnung bei normalen Temperaturen bestehen, den Akku vom Händler prüfen lassen.
+  behavior:
+    assist: off
+  repair:
+    difficulty: easy
+    diy_possible: true
+    dealer_tool_required: false
+  related_codes:
+    - shimano-steps:W010
+    - shimano-steps:E023
+  sources:
+    - https://www.ebikeerror.com/shimano/w020-error-code.html
+    - https://doctibike.com/en/blog/list-of-shimano-error-codes-symptoms-and-solutions-n61
+    - https://ebike-mtb.com/en/ebike-error-codes/
+    - https://www.linexo.at/magazin/pflege-wartung/e-bike-fehlersuche-diese-fehlercodes-musst-du-kennen
+- system: shimano-steps
+  code: W032
+  category: system
+  title:
+    en: Installed shifting unit does not match system configuration
+    de: Montierte Schalteinheit passt nicht zur Systemkonfiguration
+  description:
+    en: A shifting unit (electronic Di2 component) that differs from the stored system configuration has
+      been detected. Electronic shifting will not work until the configuration matches the installed
+      hardware. This typically appears after a component swap and must be resolved by checking the
+      configuration at the dealer.
+    de: Es wurde eine Schalteinheit (elektronische Di2-Komponente) erkannt, die von der hinterlegten
+      Systemkonfiguration abweicht. Das elektronische Schalten funktioniert nicht, bis Konfiguration
+      und verbaute Hardware zusammenpassen. Tritt typischerweise nach einem Komponententausch auf
+      und muss über eine Konfigurationsprüfung beim Händler gelöst werden.
+  applies_to:
+    - E6100
+    - E7000
+    - E8000
+  affected_components:
+    - di2_shifting_unit
+    - system_configuration
+  common_causes:
+    - id: wrong_shifting_unit
+      likelihood: high
+      label:
+        en: Shifting unit installed that differs from the original system setup
+        de: Schalteinheit verbaut, die von der ursprünglichen Systemkonfiguration abweicht
+    - id: configuration_mismatch
+      likelihood: medium
+      label:
+        en: System configuration not updated after a component swap
+        de: Systemkonfiguration nach Komponententausch nicht aktualisiert
+  symptoms:
+    - en: Electronic gear shifting does not work
+      de: Elektronisches Schalten funktioniert nicht
+    - en: W032 appears after a shifting component was replaced
+      de: W032 erscheint, nachdem eine Schaltkomponente getauscht wurde
+  self_help:
+    - en: Restart the system once; if the warning remains, contact the shop that built or serviced the
+        bike.
+      de: System einmal neu starten; bleibt die Warnung, den Laden kontaktieren, der das Rad aufgebaut
+        oder gewartet hat.
+  behavior:
+    assist: unknown
+  repair:
+    difficulty: medium
+    diy_possible: false
+    dealer_tool_required: true
+  related_codes:
+    - shimano-steps:E033
+  sources:
+    - https://www.ebikeerror.com/shimano/w032-error-code.html
+    - https://www.linexo.at/magazin/pflege-wartung/e-bike-fehlersuche-diese-fehlercodes-musst-du-kennen
+- system: shimano-steps
+  code: W100
+  category: motor
+  title:
+    en: Drive unit overtemperature (EP8 generation)
+    de: Übertemperatur der Antriebseinheit (EP8-Generation)
+  description:
+    en: "The EP8-generation counterpart to W010: the drive unit has become hotter than its normal
+      operating range, typically from sustained high load, and the system temporarily limits assist
+      power. After a cooling break the warning clears by itself. No repair is needed unless it
+      occurs repeatedly under light load."
+    de: "Das EP8-Pendant zu W010: Die Antriebseinheit ist heißer geworden als ihr normaler
+      Betriebsbereich, typischerweise durch anhaltend hohe Last, und das System begrenzt
+      vorübergehend die Unterstützungsleistung. Nach einer Abkühlpause verschwindet die Warnung von
+      selbst. Eine Reparatur ist nur nötig, wenn sie wiederholt bei geringer Last auftritt."
+  applies_to:
+    - EP8
+  affected_components:
+    - drive_unit
+  common_causes:
+    - id: sustained_high_load
+      likelihood: high
+      label:
+        en: Long climbs in high assist modes
+        de: Lange Anstiege in hohen Unterstützungsstufen
+    - id: high_ambient_temperature
+      likelihood: medium
+      label:
+        en: High ambient temperatures
+        de: Hohe Umgebungstemperaturen
+  symptoms:
+    - en: Assist power drops during long, hard climbs
+      de: Unterstützung lässt bei langen, harten Anstiegen nach
+    - en: Warning disappears after a cooling break
+      de: Warnung verschwindet nach einer Abkühlpause
+  self_help:
+    - en: Take a break and let the motor cool down before continuing.
+      de: Pause machen und den Motor abkühlen lassen, bevor es weitergeht.
+    - en: Ride in a lower assist mode on sustained climbs.
+      de: An langen Anstiegen eine niedrigere Unterstützungsstufe fahren.
+  behavior:
+    assist: reduced
+  repair:
+    difficulty: easy
+    diy_possible: true
+    dealer_tool_required: false
+  related_codes:
+    - shimano-steps:W010
+  sources:
+    - https://qiolor.com/blogs/news/shimano-ebike-error-codes-explained
+    - https://ebike-mtb.com/en/ebike-error-codes/
+    - https://www.linexo.at/magazin/pflege-wartung/e-bike-fehlersuche-diese-fehlercodes-musst-du-kennen
+- system: shimano-steps
+  code: W101
+  category: sensor
+  title:
+    en: Speed not detected (EP8 generation)
+    de: Geschwindigkeit wird nicht erkannt (EP8-Generation)
+  description:
+    en: "The EP8-generation counterpart to W011: the system receives no valid speed signal from the
+      speed sensor, so assist is limited. The most frequent cause is a spoke or rotor magnet that
+      has shifted relative to the sensor, or a damaged sensor cable. Checking magnet position and
+      sensor gap usually resolves it."
+    de: "Das EP8-Pendant zu W011: Das System erhält kein gültiges Geschwindigkeitssignal vom
+      Speedsensor, daher wird die Unterstützung begrenzt. Häufigste Ursache ist ein gegenüber dem
+      Sensor verrutschter Speichen- oder Rotor-Magnet oder ein beschädigtes Sensorkabel. Die
+      Kontrolle von Magnetposition und Sensorabstand behebt das Problem meist."
+  applies_to:
+    - EP8
+  affected_components:
+    - speed_sensor
+    - spoke_magnet
+    - sensor_cable
+  common_causes:
+    - id: magnet_misaligned
+      likelihood: high
+      label:
+        en: Magnet shifted out of alignment with the sensor
+        de: Magnet gegenüber dem Sensor verrutscht
+    - id: sensor_gap_wrong
+      likelihood: medium
+      label:
+        en: Wrong distance between sensor and magnet
+        de: Falscher Abstand zwischen Sensor und Magnet
+    - id: cable_damage
+      likelihood: medium
+      label:
+        en: Damaged speed sensor cable
+        de: Beschädigtes Speedsensor-Kabel
+  symptoms:
+    - en: Assist reduced or cutting out
+      de: Unterstützung reduziert oder setzt aus
+    - en: No or implausible speed shown
+      de: Keine oder unplausible Geschwindigkeitsanzeige
+  self_help:
+    - en: Check the position of the spoke/rotor magnet and realign it with the sensor.
+      de: Position des Speichen-/Rotor-Magneten prüfen und zum Sensor ausrichten.
+    - en: Inspect the sensor cable for visible damage.
+      de: Sensorkabel auf sichtbare Beschädigungen prüfen.
+    - en: Restart the system; if the warning remains, see a dealer.
+      de: System neu starten; bleibt die Warnung, zum Händler.
+  behavior:
+    assist: reduced
+  repair:
+    difficulty: easy
+    diy_possible: true
+    dealer_tool_required: false
+  related_codes:
+    - shimano-steps:W011
+    - shimano-steps:E014
+  sources:
+    - https://qiolor.com/blogs/news/shimano-ebike-error-codes-explained
+    - https://ebike-mtb.com/en/ebike-error-codes/
+    - https://survivalmesserguide.de/shimano-e-bike-fehlercode/
+- system: shimano-steps
+  code: W103
+  category: sensor
+  title:
+    en: Torque sensor initialization failed (EP8 generation)
+    de: Initialisierung des Drehmomentsensors fehlgeschlagen (EP8-Generation)
+  description:
+    en: "The EP8-generation counterpart to W013: the torque sensor could not finish its self-calibration
+      at startup, usually because the pedals were loaded when the system was switched on. Assist
+      remains weaker than normal until initialization succeeds. Rotating the crank backwards a few
+      times or restarting without pedal load normally clears the warning."
+    de: "Das EP8-Pendant zu W013: Der Drehmomentsensor konnte seine Selbstkalibrierung beim Einschalten
+      nicht abschließen, meist weil die Pedale beim Start belastet waren. Die Unterstützung bleibt
+      schwächer als normal, bis die Initialisierung gelingt. Die Kurbel einige Male rückwärts drehen
+      oder ohne Pedallast neu starten behebt die Warnung normalerweise."
+  applies_to:
+    - EP8
+  affected_components:
+    - torque_sensor
+  common_causes:
+    - id: pedal_load_at_startup
+      likelihood: high
+      label:
+        en: Load on the pedals while switching on
+        de: Last auf den Pedalen beim Einschalten
+    - id: initialization_failed
+      likelihood: medium
+      label:
+        en: Sensor self-calibration interrupted
+        de: Selbstkalibrierung des Sensors unterbrochen
+    - id: torque_sensor_fault
+      likelihood: low
+      label:
+        en: Persistent torque sensor defect
+        de: Dauerhafter Defekt des Drehmomentsensors
+  symptoms:
+    - en: Weaker assist than usual right after startup
+      de: Schwächere Unterstützung direkt nach dem Start
+    - en: Warning shown on display or in the app
+      de: Warnung im Display oder in der App
+  self_help:
+    - en: Rotate the crank backwards two to three times.
+      de: Die Kurbel zwei- bis dreimal rückwärts drehen.
+    - en: Switch the system off and on again without touching the pedals.
+      de: System aus- und wieder einschalten, ohne die Pedale zu berühren.
+    - en: If the warning keeps returning, contact your dealer.
+      de: Kehrt die Warnung immer wieder zurück, den Händler kontaktieren.
+  behavior:
+    assist: reduced
+  repair:
+    difficulty: easy
+    diy_possible: true
+    dealer_tool_required: false
+  related_codes:
+    - shimano-steps:W013
+    - shimano-steps:E012
+  sources:
+    - https://www.ebikeerror.com/shimano/w103-error-code.html
+    - https://qiolor.com/blogs/news/shimano-ebike-error-codes-explained
+    - https://ebike-mtb.com/en/ebike-error-codes/

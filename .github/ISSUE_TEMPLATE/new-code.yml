@@ -1,0 +1,65 @@
+name: New code
+description: Propose a new error code entry
+title: "[code] SYSTEM:CODE — short title"
+labels: [new-code]
+body:
+  - type: input
+    id: system
+    attributes:
+      label: Drive system
+      placeholder: bosch
+      description: System slug, e.g. bosch, shimano-steps, yamaha, bafang.
+    validations:
+      required: true
+  - type: input
+    id: code
+    attributes:
+      label: Code
+      placeholder: "503"
+      description: Uppercase identifier as shown on the display.
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - motor
+        - battery
+        - display
+        - remote
+        - sensor
+        - communication
+        - charger
+        - brake
+        - system
+    validations:
+      required: true
+  - type: input
+    id: title_en
+    attributes:
+      label: Title (English)
+    validations:
+      required: true
+  - type: input
+    id: title_de
+    attributes:
+      label: Title (German, optional)
+  - type: textarea
+    id: details
+    attributes:
+      label: Description, causes, self-help (own words!)
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: At least one public source. Forum posts only as supplement.
+    validations:
+      required: true
+  - type: checkboxes
+    id: license
+    attributes:
+      label: License
+      options:
+        - label: I agree that any text I provide here is dedicated to the public domain under CC0-1.0.
+          required: true

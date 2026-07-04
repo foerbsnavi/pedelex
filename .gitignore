@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+.env
+.idea/
+.vscode/
+*.tgz
+.cache/
+pedelex_funktionen.txt
+_temp/

@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/foerbsnavi/pedelex/main/schema/code.schema.json",
+  "title": "E-bike drive system error code",
+  "type": "object",
+  "required": ["system", "code", "category", "title", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "system": {
+      "enum": [
+        "bosch",
+        "shimano-steps",
+        "yamaha",
+        "brose",
+        "specialized",
+        "bafang",
+        "fazua",
+        "mahle",
+        "giant",
+        "panasonic",
+        "tq",
+        "pinion",
+        "dji-avinox",
+        "continental"
+      ],
+      "description": "Drive system the code belongs to. E-bike codes are manufacturer-specific — the identity of an entry is always system + code."
+    },
+    "code": {
+      "type": "string",
+      "pattern": "^[A-Z0-9][A-Z0-9.\\-]{0,11}$",
+      "description": "Code as shown on the display, uppercase, e.g. 503, W013, E010, ER01"
+    },
+    "category": {
+      "enum": ["motor", "battery", "display", "remote", "sensor", "communication", "charger", "brake", "system"]
+    },
+    "applies_to": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 2, "maxLength": 80 },
+      "uniqueItems": true,
+      "description": "Drive unit generations / models this code applies to, e.g. 'Performance Line CX Gen4', 'EP8', 'Smart System'"
+    },
+    "title": {
+      "type": "object",
+      "required": ["en"],
+      "patternProperties": {
+        "^[a-z]{2}$": { "type": "string", "minLength": 3, "maxLength": 200 }
+      },
+      "additionalProperties": false
+    },
+    "description": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-z]{2}$": { "type": "string", "minLength": 10, "maxLength": 2000 }
+      },
+      "additionalProperties": false
+    },
+    "affected_components": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]+$" },
+      "uniqueItems": true
+    },
+    "common_causes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "likelihood", "label"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z][a-z0-9_]+$" },
+          "likelihood": { "enum": ["low", "medium", "high"] },
+          "label": {
+            "type": "object",
+            "required": ["en"],
+            "patternProperties": {
+              "^[a-z]{2}$": { "type": "string", "minLength": 3 }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "symptoms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["en"],
+        "patternProperties": {
+          "^[a-z]{2}$": { "type": "string", "minLength": 3, "maxLength": 200 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "self_help": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["en"],
+        "patternProperties": {
+          "^[a-z]{2}$": { "type": "string", "minLength": 3, "maxLength": 300 }
+        },
+        "additionalProperties": false
+      },
+      "description": "Ordered roadside self-help steps a layperson can safely try, e.g. restart the system, reseat the battery"
+    },
+    "behavior": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "assist": {
+          "enum": ["off", "reduced", "unaffected", "unknown"],
+          "description": "What the motor assist does while this code is active"
+        }
+      }
+    },
+    "repair": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "difficulty": { "enum": ["easy", "medium", "hard", "shop_only"] },
+        "diy_possible": { "type": "boolean" },
+        "dealer_tool_required": {
+          "type": "boolean",
+          "description": "true if clearing/diagnosing requires the manufacturer's dealer diagnostic tool"
+        },
+        "estimated_cost_eur": {
+          "type": "array",
+          "items": { "type": "number", "minimum": 0 },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "estimated_hours": {
+          "type": "array",
+          "items": { "type": "number", "minimum": 0 },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "related_codes": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9\\-]+:[A-Z0-9][A-Z0-9.\\-]{0,11}$" },
+      "uniqueItems": true,
+      "description": "Fully qualified references, e.g. bosch:504, shimano-steps:E013"
+    },
+    "references": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "sources": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    }
+  }
+}
